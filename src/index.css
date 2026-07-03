@@ -1,0 +1,120 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Segoe UI", "Tahoma", "Arial", sans-serif;
+
+  --color-water-blue: #159bd7;
+  --color-water-cyan: #22c7dd;
+  --color-deep-teal: #0f766e;
+  --color-trust-green: #15803d;
+  --color-sky-soft: #e8f7ff;
+  --color-warm-white: #fbfaf7;
+  --color-soft-gold: #d6a84f;
+  --color-night-navy: #102133;
+  --color-night-panel: #17293d;
+  --color-ink: #15303a;
+}
+
+:root {
+  color-scheme: light;
+  --page-bg: #fbfaf7;
+  --surface: #ffffff;
+  --surface-soft: #f0f9fc;
+  --heading: #0f4f4a;
+  --body: #24424a;
+  --muted: #64777f;
+  --border: #d8ecef;
+  --accent: #159bd7;
+  --accent-strong: #0f766e;
+}
+
+.dark {
+  color-scheme: dark;
+  --page-bg: #102133;
+  --surface: #17293d;
+  --surface-soft: #1e3449;
+  --heading: #d7f6f1;
+  --body: #d9e7ed;
+  --muted: #a4b7c3;
+  --border: #294459;
+  --accent: #35c4e6;
+  --accent-strong: #5ee2d1;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 320px;
+  margin: 0;
+  overflow-x: hidden;
+  background: var(--page-bg);
+  color: var(--body);
+  font-family: var(--font-sans);
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+section[id] {
+  scroll-margin-top: 5.5rem;
+}
+
+.nidaa-preloader-bg {
+  background:
+    radial-gradient(circle at 50% 42%, rgba(34, 199, 221, 0.16), transparent 34%),
+    radial-gradient(circle at 38% 58%, rgba(15, 118, 110, 0.09), transparent 28%),
+    linear-gradient(135deg, rgba(232, 247, 255, 0.78) 0%, rgba(251, 250, 247, 1) 48%, rgba(244, 250, 246, 0.92) 100%),
+    var(--page-bg);
+}
+
+.dark .nidaa-preloader-bg {
+  background:
+    radial-gradient(circle at 50% 42%, rgba(53, 196, 230, 0.18), transparent 34%),
+    radial-gradient(circle at 38% 58%, rgba(94, 226, 209, 0.08), transparent 30%),
+    linear-gradient(135deg, rgba(16, 33, 51, 1) 0%, rgba(23, 41, 61, 0.98) 54%, rgba(12, 49, 67, 0.92) 100%),
+    var(--page-bg);
+}
+
+.nidaa-preloader-aura {
+  background:
+    radial-gradient(circle at center, rgba(255, 255, 255, 0.42), transparent 24%),
+    radial-gradient(circle at center, rgba(214, 168, 79, 0.08), transparent 42%);
+}
+
+.dark .nidaa-preloader-aura {
+  background:
+    radial-gradient(circle at center, rgba(53, 196, 230, 0.08), transparent 28%),
+    radial-gradient(circle at center, rgba(214, 168, 79, 0.05), transparent 46%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
