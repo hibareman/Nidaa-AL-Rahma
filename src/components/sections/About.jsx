@@ -148,7 +148,7 @@ function AboutVisual({ copy }) {
 
         <div className="relative overflow-hidden rounded-[1.35rem] bg-white dark:bg-night-panel">
           <img
-            src={copy.imagePath}
+            src={`${import.meta.env.BASE_URL}assets/about-image.jpg`}
             alt={copy.imageLabel}
             className="block w-full rounded-[1.1rem] bg-white object-contain"
           />
@@ -238,18 +238,34 @@ export default function About() {
               </div>
             </motion.div>
 
+            {/* ✅ قسم الإحصائيات - مع تكبير المربع الأخير */}
             <div className="mt-7 grid grid-cols-2 gap-2.5 sm:mt-8 sm:gap-3 xl:grid-cols-4">
-              {copy.stats.map((item) => (
-                <motion.div
-                  key={item.label}
-                  className="rounded-2xl border border-white/80 bg-white/72 p-3.5 shadow-lg shadow-slate-900/5 backdrop-blur-md dark:border-white/10 dark:bg-white/6 dark:shadow-black/10 sm:rounded-3xl sm:p-5"
-                  whileHover={{ y: -4 }}
-                  transition={{ type: "spring", stiffness: 260, damping: 22 }}
-                >
-                  <p className="text-2xl font-black leading-none text-water-blue dark:text-water-cyan sm:text-3xl">{item.value}</p>
-                  <p className="mt-2 text-xs font-bold leading-5 text-[var(--muted)] sm:text-sm sm:leading-6">{item.label}</p>
-                </motion.div>
-              ))}
+              {copy.stats.map((item, index) => {
+                // ✅ التحقق إذا كانت هذه هي الإحصائية الأخيرة (رقم +440711)
+                const isLastStat = index === copy.stats.length - 1;
+                
+                return (
+                  <motion.div
+                    key={item.label}
+                    className={`rounded-2xl border border-white/80 bg-white/72 p-3.5 shadow-lg shadow-slate-900/5 backdrop-blur-md dark:border-white/10 dark:bg-white/6 dark:shadow-black/10 sm:rounded-3xl sm:p-5 ${
+                      isLastStat ? "col-span-2 sm:col-span-2 xl:col-span-1" : ""
+                    }`}
+                    whileHover={{ y: -4 }}
+                    transition={{ type: "spring", stiffness: 260, damping: 22 }}
+                  >
+                    <p className={`font-black leading-none text-water-blue dark:text-water-cyan ${
+                      isLastStat ? "text-3xl sm:text-4xl xl:text-2xl" : "text-2xl sm:text-3xl"
+                    }`}>
+                      {item.value}
+                    </p>
+                    <p className={`mt-2 font-bold leading-5 text-[var(--muted)] ${
+                      isLastStat ? "text-xs sm:text-sm xl:text-[15px]" : "text-xs sm:text-sm"
+                    } sm:leading-6`}>
+                      {item.label}
+                    </p>
+                  </motion.div>
+                );
+              })}
             </div>
           </div>
 
@@ -332,19 +348,19 @@ export default function About() {
             <div className="hidden h-10 w-px bg-water-blue/15 dark:bg-water-cyan/15 lg:block" />
 
             <div className="flex flex-wrap items-center justify-center gap-3 lg:justify-start">
-            {copy.values.map((value, index) => {
-              const Icon = valueIcons[index % valueIcons.length];
+              {copy.values.map((value, index) => {
+                const Icon = valueIcons[index % valueIcons.length];
 
-              return (
-                <span
-                  key={value}
-                  className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--surface)] px-4 py-2 text-sm font-bold text-[var(--heading)] shadow-sm shadow-slate-900/5 dark:bg-white/6"
-                >
-                  <Icon size={16} className={index % 2 === 0 ? "text-water-blue dark:text-water-cyan" : "text-soft-gold"} />
-                  {value}
-                </span>
-              );
-            })}
+                return (
+                  <span
+                    key={value}
+                    className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--surface)] px-4 py-2 text-sm font-bold text-[var(--heading)] shadow-sm shadow-slate-900/5 dark:bg-white/6"
+                  >
+                    <Icon size={16} className={index % 2 === 0 ? "text-water-blue dark:text-water-cyan" : "text-soft-gold"} />
+                    {value}
+                  </span>
+                );
+              })}
             </div>
           </div>
         </div>

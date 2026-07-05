@@ -7,20 +7,20 @@ export const aboutContent = {
     highlight: "نحو وصول أوسع للمناطق المسلمة النائية التي تحتاج إلى الماء والمساجد بكرامة وأمانة وأثر مستدام.",
     supervisorLabel: "بإشراف",
     supervisorName: "أبو عمر غازي",
-    assurance: ["تحديثات دورية", "صور وفيديو", "شاهد باسم المتبرع"],
+    assurance: ["تحديثات دورية", "صور وفيديو", "شاهد باسم المتكفل"],
     reachTitle: "خدماتنا تصل إلى",
     reachNote: "مناطق مسلمة نائية وأكثر حاجة",
     proofBadge: "توثيق من الحفر حتى الافتتاح",
     imageLabel: "نموذج من توثيق المشاريع",
     imageCaption:
-      "يتم تجهيز شاهد المشروع بالاسم المطلوب قبل بدء التنفيذ، ثم توثيق مراحل العمل بالصور والفيديو من الحفر حتى الافتتاح، ليبقى المتبرع على اطلاع واضح بكل خطوة.",
+      "يتم تجهيز شاهد المشروع بالاسم المطلوب قبل بدء التنفيذ، ثم توثيق مراحل العمل بالصور والفيديو من الحفر حتى الافتتاح، ليبقى المتكفل على اطلاع واضح بكل خطوة.",
     imagePath: "/assets/about-image.jpg?v=2",
-    countries: ["باكستان", "بنغلاديش", "نيبال", "الهند"],
+    countries: ["بنغلاديش", "باكستان", "الهند", "نيبال"], // ✅ تم تغيير الترتيب
     stats: [
-      { value: "+120", label: "بئر منفذ" },
+      { value: "+1000", label: "مشاريع قيد التنفيذ" },
       { value: "+4", label: "دول عمل" },
       { value: "100%", label: "توثيق بالصور والفيديو" },
-      { value: "+350", label: "مستفيد في المشروع النموذجي" },
+      { value: "+440711", label: "مستفيد من مشاريعنا النموذجية" },
     ],
     workflow: [
       {
@@ -65,7 +65,7 @@ export const aboutContent = {
     imageLabel: "Project documentation sample",
     imageCaption: "The project plaque is designed and approved before work begins, then progress is documented until opening.",
     imagePath: "/assets/about-image.jpg?v=2",
-    countries: ["Pakistan", "Bangladesh", "Nepal", "India"],
+    countries: ["Bangladesh", "Pakistan", "India", "Nepal"], // ✅ تم تغيير الترتيب
     stats: [
       { value: "+120", label: "Wells delivered" },
       { value: "+4", label: "Countries served" },

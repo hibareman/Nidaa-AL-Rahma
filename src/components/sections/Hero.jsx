@@ -28,7 +28,7 @@ const heroCopy = {
     primaryCta: "اطلب مشروعا",
     secondaryCta: "تواصل معنا",
     floating: [
-      { value: "+120", label: "بئر منفذ", icon: Droplet, tone: "blue" },
+      { value: "+1000", label: "مشاريع قيد التنفيذ", icon: Droplet, tone: "blue" },
       { value: "مشاريع", label: "موثقة", icon: ShieldCheck, tone: "teal" },
       { value: "صدقة", label: "جارية", icon: HandHeart, tone: "gold" },
     ],

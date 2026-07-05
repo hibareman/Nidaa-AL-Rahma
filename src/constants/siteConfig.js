@@ -11,26 +11,21 @@ export const siteConfig = {
     ar: "مؤسسة تعنى بحفر آبار المياه وبناء المساجد في المناطق التي تحتاج إلى بنية إنسانية وروحية مستقرة.",
     en: "An organization focused on water wells and mosques for communities that need lasting humanitarian and spiritual infrastructure.",
   },
-  logoPath: "/assets/logo.jpg",
+  // تم تعديل مسار الشعار
+  logoPath: `${import.meta.env.BASE_URL}assets/logo.jpg`,
+  // تم تعديل مسار صورة about
+  aboutimagePath: `${import.meta.env.BASE_URL}assets/about-image.jpg`,
+  // تم تعديل مسار صورة image
+  logo3Path: `${import.meta.env.BASE_URL}assets/image.png`,
+  // تم تعديل مسار صورة water
+  logo2Path: `${import.meta.env.BASE_URL}assets/water.png`,
+  
+  // ملاحظات placeholder (غير مستخدمة في الصور)
   placeholderNote: {
     ar: "محتوى مبدئي منظم، وسيتم تطوير هذا القسم لاحقاً.",
     en: "Structured placeholder content. This section will be expanded later.",
   },
-  aboutimagePath: "/assets/about image.jpg",
-  placeholderNote: {
-    ar: "محتوى مبدئي منظم، وسيتم تطوير هذا القسم لاحقاً.",
-    en: "Structured placeholder content. This section will be expanded later.",
-  },
-  logo3Path: "/assets/image.png",
-  placeholderNote: {
-    ar: "محتوى مبدئي منظم، وسيتم تطوير هذا القسم لاحقاً.",
-    en: "Structured placeholder content. This section will be expanded later.",
-  },
-  logo2Path: "/assets/water.png",
-  placeholderNote: {
-    ar: "محتوى مبدئي منظم، وسيتم تطوير هذا القسم لاحقاً.",
-    en: "Structured placeholder content. This section will be expanded later.",
-  },
+  
   contact: {
     email: "info@nidaa-alrahma.org",
     phone: "+000 000 0000",

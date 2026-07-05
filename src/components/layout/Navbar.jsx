@@ -1,4 +1,5 @@
-import { useState } from "react";
+// src/components/Navbar.jsx
+import { useState, useEffect } from "react";
 import { Menu, Moon, Sun, X } from "lucide-react";
 import Container from "../ui/Container.jsx";
 import { siteConfig } from "../../constants/siteConfig.js";
@@ -9,7 +10,8 @@ const navItems = {
   ar: [
     { id: "home", href: "#home", label: "الرئيسية" },
     { id: "about", href: "#about", label: "من نحن" },
-    { id: "projects", href: "#projects", label: "مشاريعنا" },
+    { id: "services", href: "#services", label: "خدماتنا" },
+    { id: "projects", href: "#projects", label: "باقات الآبار" },
     { id: "impact", href: "#impact", label: "تقرير الأثر" },
     { id: "stories", href: "#stories", label: "أخبارنا" },
     { id: "contact", href: "#contact", label: "تواصل معنا" },
@@ -17,7 +19,8 @@ const navItems = {
   en: [
     { id: "home", href: "#home", label: "Home" },
     { id: "about", href: "#about", label: "About" },
-    { id: "projects", href: "#projects", label: "Projects" },
+    { id: "services", href: "#services", label: "Services" },
+    { id: "projects", href: "#projects", label: "Well Packages" },
     { id: "impact", href: "#impact", label: "Impact Report" },
     { id: "stories", href: "#stories", label: "News" },
     { id: "contact", href: "#contact", label: "Contact" },
@@ -41,11 +44,39 @@ function NavLogoMark() {
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
+  const [activeId, setActiveId] = useState("home");
+  const [hoveredId, setHoveredId] = useState(null);
   const { language, toggleLanguage } = useLanguage();
   const { isDark, toggleTheme } = useTheme();
-  const items = (navItems[language] || navItems.ar).filter((item) =>
-    ["home", "about"].includes(item.id),
-  );
+  const items = (navItems[language] || navItems.ar);
+
+  // تحديد القسم النشط عند التمرير
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = items.map(item => ({
+        id: item.id,
+        element: document.querySelector(item.href)
+      }));
+
+      let currentActive = "home";
+      
+      for (const section of sections) {
+        if (section.element) {
+          const rect = section.element.getBoundingClientRect();
+          if (rect.top <= 200) {
+            currentActive = section.id;
+          }
+        }
+      }
+      
+      setActiveId(currentActive);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    setTimeout(handleScroll, 100);
+    
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [items]);
 
   const toggleMenu = () => {
     if (isOpen) {
@@ -59,7 +90,8 @@ export default function Navbar() {
     }
   };
 
-  const handleItemClick = () => {
+  const handleItemClick = (id) => {
+    setActiveId(id);
     setIsClosing(true);
     setTimeout(() => {
       setIsOpen(false);
@@ -78,23 +110,42 @@ export default function Navbar() {
             </span>
           </a>
 
-          <div className="hidden items-stretch gap-8 self-stretch lg:flex">
-            {items.map((item) => (
-              <a
-                key={item.id}
-                href={item.href}
-                className={`relative inline-flex items-center px-1 text-base font-bold transition ${
-                  item.id === "home"
-                    ? "text-[#1769d5] dark:text-water-cyan"
-                    : "text-[#3f4b62] hover:text-[#1769d5] dark:text-slate-200 dark:hover:text-water-cyan"
-                }`}
-              >
-                {item.label}
-                {item.id === "home" ? (
-                  <span className="absolute inset-x-0 -bottom-px mx-auto h-1.5 w-full rounded-t-full bg-[#1769d5] shadow-lg shadow-water-blue/25 dark:bg-water-cyan" />
-                ) : null}
-              </a>
-            ))}
+          <div className="hidden items-stretch gap-6 self-stretch lg:flex xl:gap-8">
+            {items.map((item) => {
+              const isActive = activeId === item.id;
+              const isHovered = hoveredId === item.id;
+              
+              return (
+                <a
+                  key={item.id}
+                  href={item.href}
+                  className={`relative inline-flex items-center px-1 text-base font-bold transition-all duration-300 ${
+                    isActive
+                      ? "text-[#1769d5] dark:text-water-cyan"
+                      : "text-[#3f4b62] hover:text-[#1769d5] dark:text-slate-200 dark:hover:text-water-cyan"
+                  }`}
+                  onMouseEnter={() => setHoveredId(item.id)}
+                  onMouseLeave={() => setHoveredId(null)}
+                  onClick={() => handleItemClick(item.id)}
+                >
+                  {item.label}
+                  
+                  {/* ✅ الخط النشط - يظهر تحت القسم المحدد */}
+                  <span
+                    className={`absolute inset-x-0 -bottom-px h-1 rounded-t-full bg-gradient-to-r from-water-blue to-water-cyan shadow-lg shadow-water-blue/25 transition-all duration-500 ${
+                      isActive ? "w-full opacity-100" : "w-0 opacity-0"
+                    }`}
+                  />
+                  
+                  {/* ✅ خط الـ Hover - يظهر عند المرور على العنصر (حتى لو كان نشطاً) */}
+                  <span
+                    className={`absolute inset-x-0 -bottom-px h-1 rounded-t-full bg-gradient-to-r from-water-blue/60 to-water-cyan/60 transition-all duration-300 ${
+                      isHovered ? "w-full opacity-100" : "w-0 opacity-0"
+                    }`}
+                  />
+                </a>
+              );
+            })}
           </div>
 
           <div className="flex shrink-0 items-center gap-3">
@@ -130,6 +181,7 @@ export default function Navbar() {
           </div>
         </nav>
 
+        {/* القائمة المتنقلة */}
         <div
           className={`mt-3 overflow-hidden transition-all duration-200 ease-out lg:hidden ${
             isOpen || isClosing ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0"
@@ -137,27 +189,28 @@ export default function Navbar() {
         >
           <div className="grid gap-1 rounded-[1.25rem] border border-white/80 bg-white/88 p-3 shadow-xl shadow-water-blue/10 backdrop-blur-2xl dark:border-white/10 dark:bg-night-panel/92">
             {items.map((item, index) => {
-              // ترتيب عكسي: آخر عنصر يختفي أولاً (من الأسفل للأعلى)
               const reversedIndex = items.length - 1 - index;
               
               let delay = 0;
               if (isClosing) {
-                // عند الإغلاق: العنصر الأخير (reversedIndex = 0) يختفي أولاً
                 delay = reversedIndex * 30;
               } else if (isOpen) {
-                // عند الفتح: العنصر الأول يظهر أولاً (نفس التأخير 30ms)
                 delay = index * 30;
               }
 
-              // العنصر يختفي فقط إذا كان في حالة الإغلاق وتم تحديده للإخفاء
               const shouldHide = isClosing && delay < (items.length - 1) * 30;
+              const isActive = activeId === item.id;
               
               return (
                 <a
                   key={item.id}
                   href={item.href}
-                  onClick={handleItemClick}
-                  className={`rounded-2xl px-4 py-3 text-sm font-bold text-[#3f4b62] transition-all duration-250 ease-out hover:bg-water-blue/8 hover:text-[#1769d5] dark:text-slate-100 dark:hover:bg-white/8 ${
+                  onClick={() => handleItemClick(item.id)}
+                  className={`rounded-2xl px-4 py-3 text-sm font-bold transition-all duration-250 ease-out ${
+                    isActive
+                      ? "bg-water-blue/10 text-[#1769d5] dark:bg-water-cyan/10 dark:text-water-cyan"
+                      : "text-[#3f4b62] hover:bg-water-blue/8 hover:text-[#1769d5] dark:text-slate-100 dark:hover:bg-white/8"
+                  } ${
                     isOpen || isClosing
                       ? shouldHide
                         ? "-translate-y-2 scale-95 opacity-0"
@@ -168,7 +221,12 @@ export default function Navbar() {
                     transitionDelay: `${delay}ms`,
                   }}
                 >
-                  {item.label}
+                  <div className="flex items-center justify-between">
+                    <span>{item.label}</span>
+                    {isActive && (
+                      <span className="h-1.5 w-1.5 rounded-full bg-water-blue dark:bg-water-cyan" />
+                    )}
+                  </div>
                 </a>
               );
             })}

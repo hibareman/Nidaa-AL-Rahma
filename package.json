@@ -3,22 +3,27 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
+  "homepage": "https://hibareman.github.io/Nidaa-AL-Rahma",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "lucide-react": "^1.22.0",
     "motion": "^12.42.2",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
+    "react-flagkit": "^2.0.4",
     "swiper": "^14.0.1"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.3.2",
     "@vitejs/plugin-react": "^6.0.3",
+    "gh-pages": "^6.3.0",
     "tailwindcss": "^4.3.2",
-    "vite": "^8.1.2"
+    "vite": "^8.1.3"
   }
 }
