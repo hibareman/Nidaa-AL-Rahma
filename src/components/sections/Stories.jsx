@@ -22,7 +22,7 @@ export default function Stories() {
         <SectionHeader {...section} />
         <Card className="mx-auto mt-10 max-w-3xl">
           <p className="text-sm leading-7 text-[var(--muted)]">
-            {siteConfig.placeholderNote[language]}
+            {siteConfig.sectionFallbackNote[language]}
           </p>
         </Card>
       </Container>

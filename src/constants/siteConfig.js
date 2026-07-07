@@ -20,15 +20,15 @@ export const siteConfig = {
   // تم تعديل مسار صورة water
   logo2Path: `${import.meta.env.BASE_URL}assets/water.png`,
   
-  // ملاحظات placeholder (غير مستخدمة في الصور)
-  placeholderNote: {
-    ar: "محتوى مبدئي منظم، وسيتم تطوير هذا القسم لاحقاً.",
-    en: "Structured placeholder content. This section will be expanded later.",
+  // ملاحظة احتياطية للأقسام غير المكتملة إذا تم تفعيلها لاحقاً.
+  sectionFallbackNote: {
+    ar: "نعمل على تجهيز تفاصيل إضافية لهذا القسم ضمن مراحل التوثيق القادمة.",
+    en: "Additional details for this section are being prepared as part of the next documentation updates.",
   },
   
   contact: {
     email: "info@nidaa-alrahma.org",
-    phone: "+000 000 0000",
+    phone: "+44 7411 572266",
     location: {
       ar: "مكتب المؤسسة",
       en: "Organization office",

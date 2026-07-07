@@ -19,71 +19,31 @@ export const navigationItems = [
     id: "services",
     href: "#services",
     label: {
-      ar: "الخدمات",
+      ar: "خدماتنا",
       en: "Services",
-    },
-  },
-  {
-    id: "wells",
-    href: "#wells",
-    label: {
-      ar: "الآبار",
-      en: "Wells",
-    },
-  },
-  {
-    id: "process",
-    href: "#process",
-    label: {
-      ar: "الآلية",
-      en: "Process",
-    },
-  },
-  {
-    id: "impact",
-    href: "#impact",
-    label: {
-      ar: "الأثر",
-      en: "Impact",
     },
   },
   {
     id: "projects",
     href: "#projects",
     label: {
-      ar: "المشاريع",
-      en: "Projects",
+      ar: "باقات الآبار",
+      en: "Well Packages",
     },
   },
   {
-    id: "before-after",
-    href: "#before-after",
+    id: "documented-projects",
+    href: "#documented-projects",
     label: {
-      ar: "قبل وبعد",
-      en: "Before/After",
-    },
-  },
-  {
-    id: "stories",
-    href: "#stories",
-    label: {
-      ar: "القصص",
-      en: "Stories",
-    },
-  },
-  {
-    id: "gallery",
-    href: "#gallery",
-    label: {
-      ar: "المعرض",
-      en: "Gallery",
+      ar: "المشاريع الموثقة",
+      en: "Documented Projects",
     },
   },
   {
     id: "faq",
     href: "#faq",
     label: {
-      ar: "الأسئلة",
+      ar: "الأسئلة الشائعة",
       en: "FAQ",
     },
   },
@@ -91,7 +51,7 @@ export const navigationItems = [
     id: "contact",
     href: "#contact",
     label: {
-      ar: "تواصل",
+      ar: "تواصل معنا",
       en: "Contact",
     },
   },

@@ -12,8 +12,8 @@ const navItems = {
     { id: "about", href: "#about", label: "من نحن" },
     { id: "services", href: "#services", label: "خدماتنا" },
     { id: "projects", href: "#projects", label: "باقات الآبار" },
-    { id: "impact", href: "#impact", label: "تقرير الأثر" },
-    { id: "stories", href: "#stories", label: "أخبارنا" },
+    { id: "documented-projects", href: "#documented-projects", label: "المشاريع الموثقة" },
+    { id: "faq", href: "#faq", label: "الأسئلة الشائعة" },
     { id: "contact", href: "#contact", label: "تواصل معنا" },
   ],
   en: [
@@ -21,8 +21,8 @@ const navItems = {
     { id: "about", href: "#about", label: "About" },
     { id: "services", href: "#services", label: "Services" },
     { id: "projects", href: "#projects", label: "Well Packages" },
-    { id: "impact", href: "#impact", label: "Impact Report" },
-    { id: "stories", href: "#stories", label: "News" },
+    { id: "documented-projects", href: "#documented-projects", label: "Documented Projects" },
+    { id: "faq", href: "#faq", label: "FAQ" },
     { id: "contact", href: "#contact", label: "Contact" },
   ],
 };
@@ -110,7 +110,7 @@ export default function Navbar() {
             </span>
           </a>
 
-          <div className="hidden items-stretch gap-6 self-stretch lg:flex xl:gap-8">
+          <div className="hidden items-stretch gap-4 self-stretch xl:flex 2xl:gap-8">
             {items.map((item) => {
               const isActive = activeId === item.id;
               const isHovered = hoveredId === item.id;
@@ -119,7 +119,7 @@ export default function Navbar() {
                 <a
                   key={item.id}
                   href={item.href}
-                  className={`relative inline-flex items-center px-1 text-base font-bold transition-all duration-300 ${
+                  className={`relative inline-flex items-center px-1 text-sm font-bold transition-all duration-300 2xl:text-base ${
                     isActive
                       ? "text-[#1769d5] dark:text-water-cyan"
                       : "text-[#3f4b62] hover:text-[#1769d5] dark:text-slate-200 dark:hover:text-water-cyan"
@@ -172,7 +172,7 @@ export default function Navbar() {
             <button
               type="button"
               onClick={toggleMenu}
-              className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-[#c9d9ec] bg-white/62 text-[#071d3d] transition hover:border-water-blue dark:border-white/10 dark:bg-white/8 dark:text-white lg:hidden"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-[#c9d9ec] bg-white/62 text-[#071d3d] transition hover:border-water-blue dark:border-white/10 dark:bg-white/8 dark:text-white xl:hidden"
               aria-label={isOpen ? "Close navigation" : "Open navigation"}
               aria-expanded={isOpen}
             >
@@ -183,8 +183,10 @@ export default function Navbar() {
 
         {/* القائمة المتنقلة */}
         <div
-          className={`mt-3 overflow-hidden transition-all duration-200 ease-out lg:hidden ${
-            isOpen || isClosing ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0"
+          className={`mt-3 transition-all duration-200 ease-out xl:hidden ${
+            isOpen || isClosing
+              ? "max-h-[calc(100svh-7rem)] overflow-y-auto overscroll-contain opacity-100"
+              : "max-h-0 overflow-hidden opacity-0"
           }`}
         >
           <div className="grid gap-1 rounded-[1.25rem] border border-white/80 bg-white/88 p-3 shadow-xl shadow-water-blue/10 backdrop-blur-2xl dark:border-white/10 dark:bg-night-panel/92">

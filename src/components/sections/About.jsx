@@ -22,72 +22,6 @@ const workflowIcons = {
 
 const valueIcons = [HandHeart, ShieldCheck, FileCheck2, CheckCircle2];
 
-function BackgroundDrop({ className = "", delay = 0 }) {
-  return (
-    <motion.svg
-      className={`absolute text-water-blue/10 dark:text-water-cyan/10 ${className}`}
-      viewBox="0 0 96 120"
-      fill="none"
-      aria-hidden="true"
-      animate={{ y: [0, -5, 0], opacity: [0.28, 0.46, 0.28] }}
-      transition={{ delay, duration: 18, repeat: Infinity, ease: "easeInOut" }}
-    >
-      <path
-        d="M48 8c24 33 39 58 39 81 0 16-12 27-39 27S9 105 9 89C9 66 24 41 48 8Z"
-        fill="currentColor"
-      />
-      <path
-        d="M32 78c8-14 22-22 40-22"
-        stroke="currentColor"
-        strokeWidth="6"
-        strokeLinecap="round"
-        opacity="0.55"
-      />
-    </motion.svg>
-  );
-}
-
-function BackgroundWell({ className = "", delay = 0 }) {
-  return (
-    <motion.svg
-      className={`absolute text-deep-teal/10 dark:text-water-cyan/10 ${className}`}
-      viewBox="0 0 140 140"
-      fill="none"
-      aria-hidden="true"
-      animate={{ y: [0, 6, 0], rotate: [0, 0.7, 0] }}
-      transition={{ delay, duration: 22, repeat: Infinity, ease: "easeInOut" }}
-    >
-      <path d="M35 54h70" stroke="currentColor" strokeWidth="6" strokeLinecap="round" />
-      <path d="M44 54v34M96 54v34" stroke="currentColor" strokeWidth="6" strokeLinecap="round" />
-      <path d="M70 56v30" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" opacity="0.7" />
-      <path d="M59 84h22l-4 21H63l-4-21Z" stroke="currentColor" strokeWidth="4.5" strokeLinejoin="round" />
-      <path
-        d="M31 96c0-13 17-23 39-23s39 10 39 23v13c0 12-17 21-39 21s-39-9-39-21V96Z"
-        stroke="currentColor"
-        strokeWidth="5"
-      />
-      <ellipse cx="70" cy="96" rx="39" ry="20" stroke="currentColor" strokeWidth="5" />
-      <path d="M49 96c14-8 28 8 42 0" stroke="currentColor" strokeWidth="4" strokeLinecap="round" opacity="0.7" />
-    </motion.svg>
-  );
-}
-
-function AboutBackgroundIcons() {
-  return (
-    <div className="absolute inset-0 overflow-hidden">
-      <BackgroundDrop className="left-[4%] top-14 h-10 w-8 sm:h-12 sm:w-10" />
-      <BackgroundDrop className="right-[10%] top-20 h-8 w-7 rotate-12 sm:h-10 sm:w-8" delay={1.3} />
-      <BackgroundWell className="right-[4%] top-[24%] h-16 w-16 rotate-3 sm:h-20 sm:w-20" delay={0.8} />
-      <BackgroundDrop className="left-[18%] top-[36%] hidden h-9 w-8 -rotate-12 md:block" delay={2.2} />
-      <BackgroundWell className="left-[3%] top-[50%] h-14 w-14 -rotate-3 sm:h-16 sm:w-16" delay={2.7} />
-      <BackgroundDrop className="right-[7%] top-[55%] h-9 w-8 rotate-6 sm:h-11 sm:w-9" delay={3.1} />
-      <BackgroundDrop className="left-[10%] bottom-[17%] hidden h-11 w-9 rotate-12 lg:block" delay={4.2} />
-      <BackgroundWell className="right-[15%] bottom-[12%] hidden h-14 w-14 rotate-6 opacity-80 md:block" delay={4.7} />
-      <BackgroundDrop className="right-[36%] bottom-[7%] hidden h-8 w-7 -rotate-6 xl:block" delay={5.4} />
-    </div>
-  );
-}
-
 function ReachCard({ copy }) {
   return (
     <motion.div
@@ -135,7 +69,7 @@ function AboutVisual({ copy }) {
     >
       <div className="absolute inset-0 -z-10 translate-y-5 rounded-[2rem] bg-water-blue/10 blur-2xl dark:bg-water-cyan/10" />
 
-      <div className="overflow-hidden rounded-[1.7rem] border border-white/80 bg-white/80 p-3 shadow-2xl shadow-water-blue/10 backdrop-blur-xl dark:border-white/10 dark:bg-white/8 dark:shadow-black/25">
+      <div className="overflow-hidden rounded-[1.7rem] border border-white/80 bg-white/80 p-3 shadow-[0_18px_48px_rgba(21,155,215,0.1)] backdrop-blur-xl dark:border-white/10 dark:bg-white/8 dark:shadow-black/20">
         <div className="mb-3 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-water-blue/12 bg-sky-soft/58 px-4 py-3 dark:border-water-cyan/12 dark:bg-night-panel/58">
           <span className="inline-flex items-center gap-2 text-sm font-black text-[var(--heading)]">
             <FileCheck2 size={18} className="text-water-blue dark:text-water-cyan" />
@@ -185,10 +119,9 @@ export default function About() {
       transition={{ duration: 0.55, ease: "easeOut" }}
     >
       <div className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-[linear-gradient(135deg,#f8fdff_0%,#eaf8ff_45%,#ffffff_100%)] dark:bg-[linear-gradient(135deg,#102133_0%,#152b42_52%,#0d2f43_100%)]" />
-        <div className="absolute inset-x-0 top-0 h-72 bg-[radial-gradient(ellipse_at_top,rgba(34,199,221,0.22),transparent_66%)] dark:bg-[radial-gradient(ellipse_at_top,rgba(34,199,221,0.16),transparent_68%)]" />
-        <div className="absolute inset-x-0 bottom-0 h-[26rem] bg-[linear-gradient(180deg,transparent_0%,rgba(207,237,252,0.66)_100%)] dark:bg-[linear-gradient(180deg,transparent_0%,rgba(34,199,221,0.08)_100%)]" />
-        <AboutBackgroundIcons />
+        <div className="absolute inset-0 bg-[linear-gradient(135deg,#f8fdff_0%,#f2fbff_48%,#ffffff_100%)] dark:bg-[linear-gradient(135deg,#102133_0%,#17293d_56%,#102133_100%)]" />
+        <div className="absolute inset-x-0 top-0 h-56 bg-[radial-gradient(ellipse_at_top,rgba(34,199,221,0.12),transparent_70%)] dark:bg-[radial-gradient(ellipse_at_top,rgba(34,199,221,0.08),transparent_72%)]" />
+        <div className="absolute inset-x-0 bottom-0 h-48 bg-[linear-gradient(180deg,transparent,rgba(214,168,79,0.04))] dark:bg-[linear-gradient(180deg,transparent,rgba(214,168,79,0.03))]" />
       </div>
 
       <Container>

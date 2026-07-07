@@ -54,7 +54,7 @@ const heroCopy = {
     primaryCta: "Request a project",
     secondaryCta: "Contact us",
     floating: [
-      { value: "+120", label: "wells delivered", icon: Droplet, tone: "blue" },
+      { value: "+1000", label: "wells delivered", icon: Droplet, tone: "blue" },
       { value: "Verified", label: "projects", icon: ShieldCheck, tone: "teal" },
       { value: "Ongoing", label: "charity", icon: HandHeart, tone: "gold" },
     ],
@@ -127,7 +127,7 @@ function HeroImagePanel({ copy }) {
       <div className="absolute inset-0 -z-10 translate-y-5 rounded-[2rem] bg-water-blue/12 blur-2xl dark:bg-water-cyan/14" />
       <div className="absolute -inset-4 -z-20 rounded-[2.4rem] bg-[radial-gradient(circle_at_50%_18%,rgba(255,255,255,0.72),transparent_38%),radial-gradient(circle_at_50%_78%,rgba(34,199,221,0.18),transparent_42%)] dark:bg-[radial-gradient(circle_at_50%_18%,rgba(34,199,221,0.12),transparent_40%),radial-gradient(circle_at_50%_82%,rgba(214,168,79,0.08),transparent_45%)]" />
 
-      <div className="relative overflow-visible rounded-[2rem] border border-white/80 bg-white/68 p-1.5 shadow-2xl shadow-water-blue/14 backdrop-blur-md dark:border-water-cyan/22 dark:bg-white/8 dark:shadow-black/25">
+      <div className="relative overflow-visible rounded-[2rem] border border-white/80 bg-white/68 p-1.5 shadow-[0_18px_48px_rgba(21,155,215,0.11)] backdrop-blur-md dark:border-water-cyan/22 dark:bg-white/8 dark:shadow-black/20">
         <div className="relative aspect-square min-h-[17rem] overflow-hidden rounded-[1.7rem] bg-[linear-gradient(145deg,#f5fcff_0%,#dff4ff_42%,#f9fdff_100%)] ring-1 ring-inset ring-water-blue/22 dark:bg-[linear-gradient(145deg,#18344f_0%,#102133_46%,#0d2c40_100%)] dark:ring-water-cyan/18 sm:min-h-[25rem] lg:min-h-[26.5rem] xl:min-h-[28.5rem]">
           <img
             src={siteConfig.logoPath}
@@ -152,16 +152,9 @@ function HeroImagePanel({ copy }) {
                 transition={{ delay: 0.45 + index * 0.12, duration: 0.52, ease: "easeOut" }}
               >
                 <motion.div
-                  className="flex min-h-24 items-center gap-4 rounded-[1.35rem] border border-white/85 bg-white/84 p-4 shadow-xl shadow-slate-900/10 backdrop-blur-xl dark:border-white/12 dark:bg-night-panel/84 dark:shadow-black/25"
-                  animate={{ y: [-7, 7] }}
-                  transition={{
-                    delay: 0.8 + index * 0.3,
-                    duration: 8 + index * 0.9,
-                    repeat: Infinity,
-                    repeatType: "mirror",
-                    ease: "easeInOut",
-                  }}
-                  whileHover={{ y: -10, scale: 1.02 }}
+                  className="flex min-h-24 items-center gap-4 rounded-[1.35rem] border border-white/85 bg-white/84 p-4 shadow-[0_14px_34px_rgba(15,35,66,0.08)] backdrop-blur-xl dark:border-white/12 dark:bg-night-panel/84 dark:shadow-black/20"
+                  transition={{ duration: 0.25, ease: "easeOut" }}
+                  whileHover={{ y: -4, scale: 1.01 }}
                 >
                   <span className={`flex h-12 w-12 shrink-0 items-center justify-center ${toneClasses[item.tone]}`}>
                     <Icon size={38} strokeWidth={1.8} />

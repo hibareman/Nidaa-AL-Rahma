@@ -54,7 +54,7 @@ export default function Process() {
                 {step.title[language]}
               </h3>
               <p className="mt-3 text-sm leading-7 text-[var(--muted)]">
-                {siteConfig.placeholderNote[language]}
+                {siteConfig.sectionFallbackNote[language]}
               </p>
             </Card>
           ))}

@@ -25,7 +25,7 @@ const servicesData = {
         title: "حفر الآبار",
         description:
           "ننفذ آباراً ارتوازية وسطحية وبئراً يدوية بمتوسط عمق يناسب الطبقات المائية، لضمان وصول الماء العذب للأهالي.",
-        stat: "أكثر من 120 بئراً",
+        stat: "أكثر من 1000 بئراً",
         color: "text-water-blue",
         borderColor: "border-water-blue",
         bgColor: "bg-water-blue",
@@ -36,7 +36,7 @@ const servicesData = {
         title: "بناء المساجد",
         description:
           "نُشيد مساجد جديدة ونُرمّم القديمة، مع تجهيزها بكل ما تحتاجه من فرش ومكبرات ودورات مياه، لتكون منارة للخير.",
-        stat: "أكثر من 30 مسجداً",
+        stat: "قريباً إن شاء الله نسعى لبناء أول المساجد",
         color: "text-soft-gold",
         borderColor: "border-soft-gold",
         bgColor: "bg-soft-gold",
@@ -77,7 +77,7 @@ const servicesData = {
         title: "Well Drilling",
         description:
           "We implement artesian, surface, and manual wells at suitable depths to ensure fresh water reaches the locals.",
-        stat: "120+ Wells",
+        stat: "1000+ Wells",
         color: "text-water-blue",
         borderColor: "border-water-blue",
         bgColor: "bg-water-blue",
@@ -88,7 +88,7 @@ const servicesData = {
         title: "Mosque Construction",
         description:
           "We build new mosques and renovate old ones, equipping them with carpets, speakers, and restrooms to be beacons of goodness.",
-        stat: "30+ Mosques",
+        stat: "First mosque projects coming soon",
         color: "text-soft-gold",
         borderColor: "border-soft-gold",
         bgColor: "bg-soft-gold",
@@ -137,13 +137,13 @@ function TimelineItem({ service, index, isLast, language }) {
     <motion.div
       ref={ref}
       className="relative flex gap-6"
-      initial={{ opacity: 0, x: -30 }}
-      animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
+      initial={{ opacity: 0, x: language === "ar" ? 30 : -30 }}
+      animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: language === "ar" ? 30 : -30 }}
       transition={{ duration: 0.6, delay: index * 0.15 }}
     >
       {/* الخط العمودي */}
       {!isLast && (
-        <div className="absolute left-[23px] top-12 h-full w-0.5 bg-water-blue/20 dark:bg-water-cyan/20" />
+        <div className="absolute start-[23px] top-12 h-full w-0.5 bg-water-blue/20 dark:bg-water-cyan/20" />
       )}
 
       {/* النقطة */}
@@ -189,11 +189,11 @@ export default function Services() {
       viewport={{ once: true, amount: 0.15 }}
       transition={{ duration: 0.6 }}
     >
-      {/* خلفية مطابقة تماماً لخلفية Hero */}
+      {/* خلفية ناعمة متناسقة بدون موجة Hero */}
       <div className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-[linear-gradient(135deg,#f8fdff_0%,#eaf8ff_45%,#ffffff_100%)] dark:bg-[linear-gradient(135deg,#102133_0%,#152b42_52%,#0d2f43_100%)]" />
-        <div className="absolute inset-x-0 top-0 h-72 bg-[radial-gradient(ellipse_at_top,rgba(34,199,221,0.22),transparent_66%)] dark:bg-[radial-gradient(ellipse_at_top,rgba(34,199,221,0.16),transparent_68%)]" />
-        <div className="absolute inset-x-0 bottom-0 h-[26rem] bg-[linear-gradient(180deg,transparent_0%,rgba(207,237,252,0.66)_100%)] dark:bg-[linear-gradient(180deg,transparent_0%,rgba(34,199,221,0.08)_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(135deg,#ffffff_0%,#f2fbff_50%,#fbfaf7_100%)] dark:bg-[linear-gradient(135deg,#102133_0%,#17293d_56%,#102133_100%)]" />
+        <div className="absolute inset-x-0 top-0 h-56 bg-[radial-gradient(ellipse_at_top,rgba(34,199,221,0.12),transparent_70%)] dark:bg-[radial-gradient(ellipse_at_top,rgba(34,199,221,0.08),transparent_72%)]" />
+        <div className="absolute inset-x-0 bottom-0 h-48 bg-[linear-gradient(180deg,transparent,rgba(214,168,79,0.04))] dark:bg-[linear-gradient(180deg,transparent,rgba(214,168,79,0.03))]" />
       </div>
 
       <Container>
@@ -218,25 +218,22 @@ export default function Services() {
             <Sparkles size={18} className="text-soft-gold" />
           </motion.div>
 
-          {/* العنوان الرئيسي - الألوان الأساسية */}
           <motion.h2
-            className="mt-5 text-3xl font-black leading-[1.15] text-[var(--heading)] sm:text-4xl lg:text-5xl"
+            className="mt-5 text-3xl font-black leading-[1.15] text-[var(--heading)] dark:text-slate-50 sm:text-4xl lg:text-5xl"
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1, duration: 0.5 }}
           >
-            {/* نحفر الأمل - باللون الأساسي */}
-            <span className="text-[var(--heading)] dark:text-slate-50">
-              نحفر الأمل
-            </span>
-            {/* النقاط الثلاث - باللون الذهبي */}
-            <span className="text-soft-gold">...</span>
-            {/* ونبني السعادة - باللون الأساسي */}
-            <span className="text-[var(--heading)] dark:text-slate-50">
-              {" "}
-              ونبني السعادة
-            </span>
+            {language === "ar" ? (
+              <>
+                <span>نحفر الأمل</span>
+                <span className="text-soft-gold">...</span>
+                <span> ونبني السعادة</span>
+              </>
+            ) : (
+              content.title
+            )}
           </motion.h2>
 
           {/* النص الوصفي - اللون الأساسي */}
@@ -292,7 +289,7 @@ export default function Services() {
           >
             <Heart
               size={16}
-              className="text-soft-gold animate-pulse"
+              className="text-soft-gold"
               strokeWidth={2.5}
             />
             <span className="bg-gradient-to-r from-soft-gold to-amber-400 bg-clip-text text-sm font-bold text-transparent">
@@ -302,7 +299,7 @@ export default function Services() {
             </span>
             <Heart
               size={16}
-              className="text-soft-gold animate-pulse"
+              className="text-soft-gold"
               strokeWidth={2.5}
             />
           </motion.div>

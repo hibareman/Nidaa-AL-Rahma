@@ -4,8 +4,12 @@ import Navbar from "./components/layout/Navbar.jsx";
 import Preloader from "./components/ui/Preloader.jsx";
 import Hero from "./components/sections/Hero.jsx";
 import About from "./components/sections/About.jsx";
-import Services from "./components/sections/Services"; 
+import Services from "./components/sections/Services.jsx";
 import Projects from "./components/sections/Projects.jsx";
+import DocumentedProjects from "./components/sections/DocumentedProjects.jsx";
+import FAQ from "./components/sections/FAQ.jsx";
+import Contact from "./components/sections/Contact.jsx";
+import Footer from "./components/layout/Footer.jsx";
 export default function App() {
   const [isPreloading, setIsPreloading] = useState(true);
 
@@ -30,11 +34,13 @@ export default function App() {
         >
           <Navbar />
           <main>
-            <Hero />
-            <About />
-            <Services />
+            
             <Projects />
+            <DocumentedProjects />
+            <FAQ />
+            <Contact />
           </main>
+          <Footer />
         </motion.div>
       ) : null}
     </div>
