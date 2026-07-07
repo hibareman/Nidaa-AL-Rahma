@@ -14,6 +14,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import Container from "../ui/Container.jsx";
+import SectionBackground from "./SectionBackground.jsx";
 import { useLanguage } from "../../context/LanguageContext.jsx";
 
 const faqContent = {
@@ -200,12 +201,9 @@ export default function FAQ() {
   return (
     <section
       id="faq"
-      className="relative isolate overflow-hidden py-12 text-[var(--body)] sm:py-20"
+      className="relative isolate overflow-hidden bg-[#f4fbff] py-12 text-[#071d3d] transition-colors duration-300 dark:bg-[#102133] dark:text-slate-50 sm:py-20"
     >
-      <div className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-[linear-gradient(135deg,#ffffff_0%,#edf9ff_48%,#fbfaf7_100%)] dark:bg-[linear-gradient(135deg,#102133_0%,#17293d_54%,#0f766e_140%)]" />
-        <div className="absolute inset-x-0 top-0 h-56 bg-[linear-gradient(180deg,rgba(34,199,221,0.13),transparent)] dark:bg-[linear-gradient(180deg,rgba(34,199,221,0.09),transparent)]" />
-      </div>
+      <SectionBackground density="low" />
 
       <Container>
         <motion.div

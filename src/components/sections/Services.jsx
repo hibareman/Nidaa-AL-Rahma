@@ -10,6 +10,7 @@ import {
   Heart,
 } from "lucide-react";
 import Container from "../ui/Container.jsx";
+import SectionBackground from "./SectionBackground.jsx";
 import { useLanguage } from "../../context/LanguageContext.jsx";
 
 const servicesData = {
@@ -183,18 +184,13 @@ export default function Services() {
   return (
     <motion.section
       id="services"
-      className="relative isolate overflow-hidden bg-[#f4fbff] py-16 text-[#071d3d] transition-colors duration-300 dark:bg-night-navy dark:text-slate-50 sm:py-20 lg:py-24"
+      className="relative isolate overflow-hidden bg-[#f4fbff] py-16 text-[#071d3d] transition-colors duration-300 dark:bg-[#102133] dark:text-slate-50 sm:py-20 lg:py-24"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, amount: 0.15 }}
       transition={{ duration: 0.6 }}
     >
-      {/* خلفية ناعمة متناسقة بدون موجة Hero */}
-      <div className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-[linear-gradient(135deg,#ffffff_0%,#f2fbff_50%,#fbfaf7_100%)] dark:bg-[linear-gradient(135deg,#102133_0%,#17293d_56%,#102133_100%)]" />
-        <div className="absolute inset-x-0 top-0 h-56 bg-[radial-gradient(ellipse_at_top,rgba(34,199,221,0.12),transparent_70%)] dark:bg-[radial-gradient(ellipse_at_top,rgba(34,199,221,0.08),transparent_72%)]" />
-        <div className="absolute inset-x-0 bottom-0 h-48 bg-[linear-gradient(180deg,transparent,rgba(214,168,79,0.04))] dark:bg-[linear-gradient(180deg,transparent,rgba(214,168,79,0.03))]" />
-      </div>
+      <SectionBackground density="low" />
 
       <Container>
         {/* رأس القسم المُحسّن */}

@@ -14,6 +14,7 @@ import {
   UserRound,
 } from "lucide-react";
 import Container from "../ui/Container.jsx";
+import SectionBackground from "./SectionBackground.jsx";
 import {
   EmailIcon,
   FacebookIcon,
@@ -177,12 +178,9 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative isolate overflow-hidden py-12 text-[var(--body)] sm:py-20"
+      className="relative isolate overflow-hidden bg-[#f4fbff] py-12 text-[#071d3d] transition-colors duration-300 dark:bg-[#102133] dark:text-slate-50 sm:py-20"
     >
-      <div className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-[linear-gradient(135deg,#f7fcff_0%,#ffffff_48%,#e8f7ff_100%)] dark:bg-[linear-gradient(135deg,#102133_0%,#17293d_58%,#0d2f43_120%)]" />
-        <div className="absolute inset-x-0 top-0 h-64 bg-[linear-gradient(180deg,rgba(21,155,215,0.13),transparent)] dark:bg-[linear-gradient(180deg,rgba(34,199,221,0.1),transparent)]" />
-      </div>
+      <SectionBackground density="low" />
 
       <Container>
         <motion.div

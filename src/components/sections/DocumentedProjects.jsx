@@ -17,6 +17,7 @@ import {
   X,
 } from "lucide-react";
 import Container from "../ui/Container.jsx";
+import SectionBackground from "./SectionBackground.jsx";
 import { useLanguage } from "../../context/LanguageContext.jsx";
 
 const mediaBase = `${import.meta.env.BASE_URL}assets/projects/project1`;
@@ -359,13 +360,9 @@ export default function DocumentedProjects() {
   return (
     <section
       id="documented-projects"
-      className="relative isolate scroll-mt-28 overflow-hidden py-12 text-[var(--body)] sm:scroll-mt-32 sm:py-20"
+      className="relative isolate scroll-mt-28 overflow-hidden bg-[#f4fbff] py-12 text-[#071d3d] transition-colors duration-300 dark:bg-[#102133] dark:text-slate-50 sm:scroll-mt-32 sm:py-20"
     >
-      <div className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-[linear-gradient(135deg,#f8fdff_0%,#eaf8ff_44%,#ffffff_100%)] dark:bg-[linear-gradient(135deg,#102133_0%,#152b42_54%,#0d2f43_100%)]" />
-        <div className="absolute inset-x-0 top-0 h-72 bg-[linear-gradient(180deg,rgba(34,199,221,0.18),transparent)] dark:bg-[linear-gradient(180deg,rgba(34,199,221,0.12),transparent)]" />
-        <div className="absolute inset-x-0 bottom-0 h-60 bg-[linear-gradient(180deg,transparent,rgba(214,168,79,0.08))] dark:bg-[linear-gradient(180deg,transparent,rgba(214,168,79,0.05))]" />
-      </div>
+      <SectionBackground density="medium" />
 
       <Container>
         <motion.div

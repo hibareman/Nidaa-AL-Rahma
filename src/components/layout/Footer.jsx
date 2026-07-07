@@ -1,10 +1,14 @@
 import { motion } from "motion/react";
 import {
   ArrowUpRight,
+  CircleDot,
+  Droplet,
   Droplets,
   Heart,
+  Landmark,
   MessageCircle,
   Sparkles,
+  Waves,
 } from "lucide-react";
 import Container from "../ui/Container.jsx";
 import {
@@ -103,13 +107,78 @@ function ExternalLink({ href, children, className = "", ariaLabel }) {
   );
 }
 
+function FooterDecorativeIcons() {
+  const icons = [
+    {
+      Icon: Droplet,
+      className: "right-[5%] top-12 h-20 w-20 text-water-cyan/22 sm:h-28 sm:w-28 lg:h-36 lg:w-36",
+      animate: { y: [0, -8, 0], rotate: [0, 2, 0] },
+      duration: 13,
+    },
+    {
+      Icon: Landmark,
+      className: "left-[6%] top-20 hidden h-18 w-18 text-soft-gold/20 sm:block lg:h-28 lg:w-28",
+      animate: { y: [0, 7, 0], rotate: [0, -1.5, 0] },
+      duration: 15,
+    },
+    {
+      Icon: Waves,
+      className: "left-[10%] bottom-24 h-18 w-18 text-water-cyan/20 sm:h-24 sm:w-24 lg:h-32 lg:w-32",
+      animate: { x: [0, 6, 0], y: [0, -4, 0] },
+      duration: 16,
+    },
+    {
+      Icon: CircleDot,
+      className: "right-[18%] bottom-16 hidden h-16 w-16 text-soft-gold/18 md:block lg:h-24 lg:w-24",
+      animate: { y: [0, -6, 0], scale: [1, 1.025, 1] },
+      duration: 14,
+    },
+    {
+      Icon: Droplets,
+      className: "left-[42%] top-10 hidden h-16 w-16 text-water-cyan/16 lg:block",
+      animate: { y: [0, -5, 0], rotate: [0, 2, 0] },
+      duration: 12,
+    },
+    {
+      Icon: Heart,
+      className: "right-[42%] bottom-10 hidden h-12 w-12 text-soft-gold/16 lg:block",
+      animate: { y: [0, 5, 0], scale: [1, 1.025, 1] },
+      duration: 17,
+    },
+  ];
+
+  return (
+    <div className="pointer-events-none absolute inset-0 z-[2] overflow-hidden" aria-hidden="true">
+      {icons.map(({ Icon, className, animate, duration }, index) => (
+        <motion.div
+          key={index}
+          className={`absolute ${className} drop-shadow-[0_0_18px_rgba(34,199,221,0.10)]`}
+          initial={{ opacity: 0, scale: 0.92 }}
+          whileInView={{ opacity: 0.82, scale: 1 }}
+          viewport={{ once: true, amount: 0.12 }}
+          animate={animate}
+          transition={{
+            opacity: { duration: 0.8, delay: index * 0.08 },
+            scale: { duration: 0.8, delay: index * 0.08 },
+            y: { duration, repeat: Infinity, ease: "easeInOut" },
+            x: { duration, repeat: Infinity, ease: "easeInOut" },
+            rotate: { duration, repeat: Infinity, ease: "easeInOut" },
+          }}
+        >
+          <Icon className="h-full w-full" strokeWidth={0.95} />
+        </motion.div>
+      ))}
+    </div>
+  );
+}
+
 export default function Footer() {
   const { language } = useLanguage();
   const content = footerContent[language] || footerContent.ar;
 
   return (
     <footer className="relative isolate overflow-hidden bg-[#071d3d] text-white transition-colors duration-300 dark:bg-[#050d19]">
-      <div className="pointer-events-none absolute inset-0 -z-10">
+      <div className="pointer-events-none absolute inset-0 z-0">
         <div className="absolute inset-0 bg-[linear-gradient(145deg,#061a36_0%,#0b2f55_54%,#071d3d_100%)] dark:bg-[linear-gradient(145deg,#050b18_0%,#0d1f36_56%,#050d19_100%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_16%,rgba(56,189,248,0.18),transparent_30%),radial-gradient(circle_at_82%_18%,rgba(214,168,79,0.1),transparent_26%)] dark:bg-[radial-gradient(circle_at_18%_16%,rgba(56,189,248,0.1),transparent_32%),radial-gradient(circle_at_82%_18%,rgba(214,168,79,0.07),transparent_28%)]" />
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-water-cyan/55 to-transparent" />
@@ -117,7 +186,10 @@ export default function Footer() {
         <div className="absolute inset-x-0 bottom-0 h-40 bg-[linear-gradient(0deg,rgba(3,13,20,0.42),transparent)] dark:bg-[linear-gradient(0deg,rgba(3,8,18,0.64),transparent)]" />
       </div>
 
-      <Container>
+      <FooterDecorativeIcons />
+
+      <div className="relative z-10">
+        <Container>
         <motion.div
           className="grid gap-6 py-12 sm:py-16 lg:grid-cols-[1.15fr_0.85fr_1fr]"
           initial={{ opacity: 0, y: 24 }}
@@ -237,7 +309,8 @@ export default function Footer() {
           <p>{content.copyright}</p>
           <p className="mt-2 sm:mt-0">{content.careLine}</p>
         </div>
-      </Container>
+        </Container>
+      </div>
     </footer>
   );
 }

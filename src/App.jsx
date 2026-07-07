@@ -34,7 +34,9 @@ export default function App() {
         >
           <Navbar />
           <main>
-            
+            <Hero />
+            <About />
+            <Services />
             <Projects />
             <DocumentedProjects />
             <FAQ />

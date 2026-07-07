@@ -10,6 +10,7 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import Container from "../ui/Container.jsx";
+import SectionBackground from "./SectionBackground.jsx";
 import { useLanguage } from "../../context/LanguageContext.jsx";
 import { aboutContent } from "../../data/about.js";
 
@@ -112,17 +113,13 @@ export default function About() {
   return (
     <motion.section
       id="about"
-      className="relative isolate overflow-hidden bg-[#f4fbff] py-20 text-[var(--body)] transition-colors duration-300 dark:bg-night-navy dark:text-slate-50 sm:py-24"
+      className="relative isolate overflow-hidden bg-[#f4fbff] py-20 text-[#071d3d] transition-colors duration-300 dark:bg-[#102133] dark:text-slate-50 sm:py-24"
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.15 }}
       transition={{ duration: 0.55, ease: "easeOut" }}
     >
-      <div className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-[linear-gradient(135deg,#f8fdff_0%,#f2fbff_48%,#ffffff_100%)] dark:bg-[linear-gradient(135deg,#102133_0%,#17293d_56%,#102133_100%)]" />
-        <div className="absolute inset-x-0 top-0 h-56 bg-[radial-gradient(ellipse_at_top,rgba(34,199,221,0.12),transparent_70%)] dark:bg-[radial-gradient(ellipse_at_top,rgba(34,199,221,0.08),transparent_72%)]" />
-        <div className="absolute inset-x-0 bottom-0 h-48 bg-[linear-gradient(180deg,transparent,rgba(214,168,79,0.04))] dark:bg-[linear-gradient(180deg,transparent,rgba(214,168,79,0.03))]" />
-      </div>
+      <SectionBackground density="low" />
 
       <Container>
         <div className="grid gap-12 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:items-center">

@@ -32,6 +32,7 @@ import {
   Circle,
 } from "lucide-react";
 import Container from "../ui/Container.jsx";
+import SectionBackground from "./SectionBackground.jsx";
 import { useLanguage } from "../../context/LanguageContext.jsx";
 
 // البيانات الأساسية المشتركة (ثابتة)
@@ -1460,14 +1461,9 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="relative isolate overflow-hidden py-16 text-[var(--body)] transition-colors duration-300 sm:py-20 lg:py-24"
+      className="relative isolate overflow-hidden bg-[#f4fbff] py-16 text-[#071d3d] transition-colors duration-300 dark:bg-[#102133] dark:text-slate-50 sm:py-20 lg:py-24"
     >
-      {/* خلفية ناعمة بدون تكرار موجة Hero */}
-      <div className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-[linear-gradient(135deg,#f8fdff_0%,#f2fbff_48%,#ffffff_100%)] dark:bg-[linear-gradient(135deg,#102133_0%,#17293d_56%,#102133_100%)]" />
-        <div className="absolute inset-x-0 top-0 h-56 bg-[radial-gradient(ellipse_at_top,rgba(34,199,221,0.13),transparent_70%)] dark:bg-[radial-gradient(ellipse_at_top,rgba(34,199,221,0.09),transparent_72%)]" />
-        <div className="absolute inset-x-0 bottom-0 h-56 bg-[linear-gradient(180deg,transparent,rgba(214,168,79,0.045))] dark:bg-[linear-gradient(180deg,transparent,rgba(214,168,79,0.035))]" />
-      </div>
+      <SectionBackground density="medium" />
 
       <Container>
         {/* رأس القسم - تصغير على الجوال */}
