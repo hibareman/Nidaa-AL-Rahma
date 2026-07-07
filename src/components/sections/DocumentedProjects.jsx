@@ -18,11 +18,13 @@ import {
 } from "lucide-react";
 import Container from "../ui/Container.jsx";
 import SectionBackground from "./SectionBackground.jsx";
+import { YouTubeIcon } from "../ui/BrandIcons.jsx";
 import { useLanguage } from "../../context/LanguageContext.jsx";
 
 const mediaBase = `${import.meta.env.BASE_URL}assets/projects/project1`;
 const projectAsset = (fileName) => `${mediaBase}/${fileName}`;
 const projectMapUrl = "https://www.google.com/maps?q=26.4551567,87.8243033&z=17&hl=en";
+const projectYoutubeUrl = "https://youtu.be/Uc6PDv7II1Q?si=42zmyToXzjCKBSPs";
 
 const projectImages = {
   before: [
@@ -99,6 +101,7 @@ const content = {
     dedicationText: "سائلين الله تعالى القبول وأن يجعلها صدقة جارية له",
     cta: "مشاهدة صور التوثيق",
     videoCta: "عرض الفيديو",
+    youtubeCta: "مشاهدة التوثيق الكامل على يوتيوب",
     close: "إغلاق",
     moreMedia: "وسائط",
     stageLabels: {
@@ -137,6 +140,7 @@ const content = {
     dedicationText: "We ask Allah to accept it and make it an ongoing charity for him.",
     cta: "View Documentation Photos",
     videoCta: "View Video",
+    youtubeCta: "Watch Full Documentation on YouTube",
     close: "Close",
     moreMedia: "media",
     stageLabels: {
@@ -551,6 +555,17 @@ export default function DocumentedProjects() {
                   <PlayCircle size={17} />
                   {labels.videoCta}
                 </button>
+
+                <a
+                  href={projectYoutubeUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center gap-2 rounded-full border border-red-500/18 bg-red-500/8 px-5 py-3 text-sm font-black text-red-600 shadow-sm transition hover:-translate-y-0.5 hover:border-red-500/35 hover:bg-red-500/12 dark:border-red-400/18 dark:bg-red-400/8 dark:text-red-300"
+                >
+                  <YouTubeIcon size={18} className="text-[#FF0000]" />
+                  {labels.youtubeCta}
+                  <ArrowUpRight size={16} className="transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </a>
               </div>
             </div>
           </div>
