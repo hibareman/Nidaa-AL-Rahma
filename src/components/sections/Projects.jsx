@@ -97,7 +97,7 @@ const extractNumber = (text) => {
 const projectsData = {
   ar: {
     eyebrow: "✦ باقات الآبار",
-    title: "أسعار ومواصفات حفر الآبار",
+    title: "أسعار ومواصفات  حفر الآبار",
     description:
       "نقدم لكم باقات متنوعة لحفر الآبار بمختلف الأعماق والمواصفات، مع توثيق شامل وضمان الجودة.",
     viewAll: "استكشف الباقات",
@@ -1322,15 +1322,15 @@ function PackageCardFinal({ project, index, language, shared, isHovered, onHover
       />
 
       {/* صورة الباقة - ارتفاع أقل على الجوال */}
-      <div className="relative h-32 sm:h-48 overflow-hidden bg-sky-soft/60 dark:bg-night-panel/80">
+      <div className="relative h-44 sm:h-64 overflow-hidden bg-sky-soft/60 dark:bg-night-panel/80">
         <img
           src={project.image}
           alt={project.type}
-          className="h-full w-full object-cover saturate-[1.02] contrast-[1.01] transition-transform duration-500 group-hover:scale-[1.025]"
+          className="h-full w-full object-cover object-[center_34%] saturate-[1.04] contrast-[1.02] transition-transform duration-500 group-hover:scale-100"
         />
 
         {/* تأثير الكشف */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/24 via-transparent to-transparent opacity-70 transition-opacity duration-300 group-hover:opacity-80" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/8 via-transparent to-transparent opacity-32 transition-opacity duration-300 group-hover:opacity-42" />
 
         <motion.div
           className="absolute left-2 top-2 sm:left-3 sm:top-3 z-10 inline-flex items-center gap-1.5 sm:gap-2 rounded-full bg-black/40 px-2 py-0.5 sm:px-3 sm:py-1 backdrop-blur-md"
@@ -1357,7 +1357,7 @@ function PackageCardFinal({ project, index, language, shared, isHovered, onHover
       </div>
 
       {/* معلومات الباقة - تصغير الخطوط والمسافات على الجوال */}
-      <div className="relative z-10 p-3 sm:p-5">
+      <div className="relative z-10 p-3 sm:p-4">
         <div className="flex justify-end">
           <div className="flex items-center gap-1 rounded-full border border-emerald-500/12 bg-emerald-500/10 px-1.5 py-0.5 sm:px-2.5 sm:py-1 text-[8px] font-black text-emerald-600 shadow-sm shadow-emerald-500/5 backdrop-blur-sm dark:text-emerald-300 sm:text-[10px]">
             <CheckCircle2 size={10} className="text-green-500 sm:size-3" />
@@ -1496,12 +1496,10 @@ export default function Projects() {
             {language === "ar" ? (
               <>
                 <span className="text-[var(--heading)] dark:text-slate-50">
-                  أسعار ومواصفات
+                   أسعار و مواصفات     حفر الآبار 
                 </span>
                 <br className="block sm:hidden" />
-                <span className="text-[var(--heading)] dark:text-slate-50">
-                  حفر الآبار
-                </span>
+                      
               </>
             ) : (
               content.title

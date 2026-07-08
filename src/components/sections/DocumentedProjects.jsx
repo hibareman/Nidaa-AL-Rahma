@@ -24,7 +24,7 @@ import { useLanguage } from "../../context/LanguageContext.jsx";
 const mediaBase = `${import.meta.env.BASE_URL}assets/projects/project1`;
 const projectAsset = (fileName) => `${mediaBase}/${fileName}`;
 const projectMapUrl = "https://www.google.com/maps?q=26.4551567,87.8243033&z=17&hl=en";
-const projectYoutubeUrl = "https://youtu.be/Uc6PDv7II1Q?si=42zmyToXzjCKBSPs";
+const projectYoutubeEmbedUrl = "https://www.youtube-nocookie.com/embed/Uc6PDv7II1Q?rel=0&modestbranding=1";
 
 const projectImages = {
   before: [
@@ -84,24 +84,111 @@ const defaultMedia =
   projectImageMedia[0] ||
   projectVideos[0];
 
+const project2MediaBase = `${import.meta.env.BASE_URL}assets/projects/project2`;
+const project2Asset = (fileName) => `${project2MediaBase}/${fileName}`;
+
+const project2Images = {
+  before: [
+    project2Asset("pre-img1.jpeg"),
+    project2Asset("pre-img2.jpeg"),
+    project2Asset("pre-img3.jpeg"),
+  ],
+  during: [
+    project2Asset("d-img1.jpeg"),
+    project2Asset("d-img2.jpeg"),
+    project2Asset("d-img3.jpeg"),
+  ],
+  after: [
+    project2Asset("l-img1.jpeg"),
+    project2Asset("l-img2.jpeg"),
+    project2Asset("l-img3.jpeg"),
+    project2Asset("l-img4.jpeg"),
+    project2Asset("l-img5.jpeg"),
+  ],
+};
+
+const project2ImageMedia = stageOrder.flatMap((stage) =>
+  project2Images[stage].map((src, index) => buildImageMedia(stage, index, src))
+);
+
+const project2Videos = [];
+
+const project2Media = [
+  ...project2ImageMedia.filter((item) => item.stage === "after"),
+  ...project2ImageMedia.filter((item) => item.stage === "during"),
+  ...project2ImageMedia.filter((item) => item.stage === "before"),
+  ...project2Videos,
+];
+const project2DefaultMedia =
+  project2ImageMedia.find((item) => item.stage === "after") ||
+  project2ImageMedia.find((item) => item.stage === "during") ||
+  project2ImageMedia[0] ||
+  project2Videos[0];
+
+const project3MediaBase = `${import.meta.env.BASE_URL}assets/projects/project3`;
+const project3Asset = (fileName) => `${project3MediaBase}/${fileName}`;
+
+const project3Images = {
+  before: [
+    project3Asset("pre-img1.jpeg"),
+    project3Asset("pre-img2.jpeg"),
+    project3Asset("pre-img3.jpeg"),
+  ],
+  during: [
+    project3Asset("d-img1.jpeg"),
+    project3Asset("d-img2.jpeg"),
+    project3Asset("d-mg3.jpeg"),
+    project3Asset("d-img4.jpeg"),
+    project3Asset("d-img5.jpeg"),
+  ],
+  after: [
+    project3Asset("l-img1.jpeg"),
+    project3Asset("l-img2.jpeg"),
+    project3Asset("l-img3.jpeg"),
+    project3Asset("l-img4.jpeg"),
+  ],
+};
+
+const project3ImageMedia = stageOrder.flatMap((stage) =>
+  project3Images[stage].map((src, index) => buildImageMedia(stage, index, src))
+);
+
+const project3Videos = [];
+
+const project3Media = [
+  ...project3ImageMedia.filter((item) => item.stage === "after"),
+  ...project3ImageMedia.filter((item) => item.stage === "during"),
+  ...project3ImageMedia.filter((item) => item.stage === "before"),
+  ...project3Videos,
+];
+const project3DefaultMedia =
+  project3ImageMedia.find((item) => item.stage === "after") ||
+  project3ImageMedia.find((item) => item.stage === "during") ||
+  project3ImageMedia[0] ||
+  project3Videos[0];
+
 const content = {
   ar: {
     badge: "مشاريع موثقة بشفافية",
     title: "المشاريع الموثقة",
     description:
-      "نؤمن أن الشفافية جزء من الأمانة، لذلك نوثق كل مشروع بالصور والتفاصيل منذ بداية التنفيذ وحتى التسليم، ليبقى الأثر واضحاً ومطمئناً لكل من ساهم في الخير.",
+      "نؤمن أن الشفافية جزء من الأمانة، لذلك نحرص على توثيق مشاريعنا بالصور والفيديو والتفاصيل منذ لحظة البداية وحتى اكتمال التنفيذ، ليبقى الأثر واضحاً، وتبقى قلوب المساهمين مطمئنة بأن عطاؤهم وصل إلى مستحقيه. فيما يلي نعرض لكم نماذج من أعمالنا الموثقة.",
     fieldBadge: "توثيق ميداني",
     mainImageBadge: "الصورة الرئيسية",
     mainVideoBadge: "توثيق مرئي",
     galleryBadge: "معرض المشروع",
     detailsTitle: "تفاصيل المشروع",
     dedicationTitle: "صدقة جارية",
+    projectLabel: "مشروع",
     dedication:
       "بئر ماء صدقة جارية عن عبد الرحمن محمد قعويرة رحمه الله وأسكنه فسيح جناته",
     dedicationText: "سائلين الله تعالى القبول وأن يجعلها صدقة جارية له",
     cta: "مشاهدة صور التوثيق",
     videoCta: "عرض الفيديو",
-    youtubeCta: "مشاهدة التوثيق الكامل على يوتيوب",
+    youtubeCta: "توثيق المشروع الكامل",
+    youtubeTitle: "توثيق مشروع كامل",
+    youtubeText:
+      "توثيق كامل لمشروع بئر ماء في نيبال، يروي مراحل العمل من البداية حتى التسليم، ويوثق الأثر الذي يصل إلى الناس بفضل الله ثم بفضل أهل الخير.",
     close: "إغلاق",
     moreMedia: "وسائط",
     stageLabels: {
@@ -135,12 +222,16 @@ const content = {
     galleryBadge: "Project gallery",
     detailsTitle: "Project Details",
     dedicationTitle: "Ongoing Charity",
+    projectLabel: "Project",
     dedication:
       "A water well as ongoing charity on behalf of Abdul Rahman Muhammad Qaweirah, may Allah have mercy on him and grant him spacious gardens.",
     dedicationText: "We ask Allah to accept it and make it an ongoing charity for him.",
     cta: "View Documentation Photos",
     videoCta: "View Video",
-    youtubeCta: "Watch Full Documentation on YouTube",
+    youtubeCta: "Full Project Documentation",
+    youtubeTitle: "Full Project Documentation",
+    youtubeText:
+      "A complete documentation video for a water well project in Nepal, showing the journey from the first stages of work to final handover and the impact delivered to the community.",
     close: "Close",
     moreMedia: "media",
     stageLabels: {
@@ -164,6 +255,117 @@ const content = {
     ],
   },
 };
+
+const project2Content = {
+  ar: {
+    dedication:
+      "بئر الغيث و الرحمة بئر صدقة جارية عن أسامة محمد حسين و زوجته رجاء كامل النجم",
+    dedicationText:
+      "سائلين الله تعالى القبول وأن يجعلها صدقة جارية لهم تحت إشراف أبو عمر غازي عن طريق صفحة نداء الرحمة لحفر الابار و بناء المساجد صدقة جارية مشروع رقم 739",
+    meta: [
+      { label: "نوع المشروع", value: "بئر الغيث و الرحمة", Icon: BadgeCheck },
+      { label: "رقم المشروع", value: "739", Icon: BadgeCheck },
+      { label: "موقع المشروع", value: "الهند بجاني مسجد", Icon: MapPin },
+      { label: "تاريخ المشروع", value: "12/02/2026", Icon: CalendarDays },
+      { label: "الإشراف", value: "أبو عمر غازي", Icon: UserRoundCheck },
+      {
+        label: "عن طريق",
+        value: "صفحة نداء الرحمة لحفر الابار و بناء المساجد صدقة جارية",
+        Icon: CheckCircle2,
+      },
+      { label: "الحالة", value: "موثق / مكتمل", Icon: CheckCircle2, success: true },
+    ],
+  },
+  en: {
+    dedication:
+      "Al-Ghaith and Al-Rahma Well, an ongoing charity on behalf of Osama Muhammad Hussein and his wife Rajaou Kamel Al-Najm.",
+    dedicationText:
+      "We ask Allah to accept it and make it an ongoing charity for them, under the supervision of Abu Omar Ghazi through the Nidaa Al Rahma page for digging wells and building mosques. Ongoing charity project number 739.",
+    meta: [
+      { label: "Project Type", value: "Al-Ghaith and Al-Rahma Well", Icon: BadgeCheck },
+      { label: "Project Number", value: "739", Icon: BadgeCheck },
+      { label: "Project Location", value: "India, Bajani Mosque", Icon: MapPin },
+      { label: "Project Date", value: "12/02/2026", Icon: CalendarDays },
+      { label: "Supervision", value: "Abu Omar Ghazi", Icon: UserRoundCheck },
+      {
+        label: "Through",
+        value: "Nidaa Al Rahma page for digging wells and building mosques as ongoing charity",
+        Icon: CheckCircle2,
+      },
+      { label: "Status", value: "Documented / Complete", Icon: CheckCircle2, success: true },
+    ],
+  },
+};
+
+const project3Content = {
+  ar: {
+    dedication:
+      "بئر الغيث و الرحمة بئر صدقة جارية عن المرحوم محمد يحيى جسري و الشهيد وليد محمد جسري",
+    dedicationText:
+      "سائلين الله القبول و أن يجعلها صدقة جارية لهم تحت إشراف أبو عمر غازي عن طريق صفحة نداء الرحمة لحفر الابار و بناء المساجد صدقة جارية مشروع رقم 728",
+    meta: [
+      { label: "نوع المشروع", value: "بئر الغيث و الرحمة", Icon: BadgeCheck },
+      { label: "رقم المشروع", value: "728", Icon: BadgeCheck },
+      { label: "موقع المشروع", value: "الباكستان", Icon: MapPin },
+      { label: "تاريخ المشروع", value: "05/02/2026", Icon: CalendarDays },
+      { label: "الإشراف", value: "أبو عمر غازي", Icon: UserRoundCheck },
+      {
+        label: "عن طريق",
+        value: "صفحة نداء الرحمة لحفر الابار و بناء المساجد صدقة جارية",
+        Icon: CheckCircle2,
+      },
+      { label: "الحالة", value: "موثق / مكتمل", Icon: CheckCircle2, success: true },
+    ],
+  },
+  en: {
+    dedication:
+      "Al-Ghaith and Al-Rahma Well, an ongoing charity on behalf of the late Muhammad Yahya Jasri and the martyr Walid Muhammad Jasri.",
+    dedicationText:
+      "We ask Allah to accept it and make it an ongoing charity for them, under the supervision of Abu Omar Ghazi through the Nidaa Al Rahma page for digging wells and building mosques. Ongoing charity project number 728.",
+    meta: [
+      { label: "Project Type", value: "Al-Ghaith and Al-Rahma Well", Icon: BadgeCheck },
+      { label: "Project Number", value: "728", Icon: BadgeCheck },
+      { label: "Project Location", value: "Pakistan", Icon: MapPin },
+      { label: "Project Date", value: "05/02/2026", Icon: CalendarDays },
+      { label: "Supervision", value: "Abu Omar Ghazi", Icon: UserRoundCheck },
+      {
+        label: "Through",
+        value: "Nidaa Al Rahma page for digging wells and building mosques as ongoing charity",
+        Icon: CheckCircle2,
+      },
+      { label: "Status", value: "Documented / Complete", Icon: CheckCircle2, success: true },
+    ],
+  },
+};
+
+const documentedProjects = [
+  {
+    id: "project2",
+    images: project2Images,
+    imageMedia: project2ImageMedia,
+    videos: project2Videos,
+    media: project2Media,
+    defaultMedia: project2DefaultMedia,
+    content: project2Content,
+  },
+  {
+    id: "project3",
+    images: project3Images,
+    imageMedia: project3ImageMedia,
+    videos: project3Videos,
+    media: project3Media,
+    defaultMedia: project3DefaultMedia,
+    content: project3Content,
+  },
+  {
+    id: "project1",
+    images: projectImages,
+    imageMedia: projectImageMedia,
+    videos: projectVideos,
+    media: projectMedia,
+    defaultMedia,
+  },
+];
 
 function MediaView({ media, labels, className = "" }) {
   if (!media) return null;
@@ -210,6 +412,67 @@ function MediaView({ media, labels, className = "" }) {
         </span>
       </div>
     </div>
+  );
+}
+
+function ProjectNumberHeading({ labels, number, className = "" }) {
+  return (
+    <motion.div
+      className={`flex justify-center ${className}`}
+      initial={{ opacity: 0, y: 14 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.45, ease: "easeOut" }}
+    >
+      <span className="inline-flex items-center gap-2 rounded-full border border-soft-gold/20 bg-white/72 px-4 py-2 text-xs font-black text-soft-gold shadow-lg shadow-soft-gold/8 backdrop-blur-xl dark:border-soft-gold/18 dark:bg-white/8">
+        <Sparkles size={15} />
+        {labels.projectLabel} {number}
+      </span>
+    </motion.div>
+  );
+}
+
+function YouTubeEmbed({ labels, className = "mt-10 sm:mt-14" }) {
+  return (
+    <motion.div
+      className={`relative overflow-hidden rounded-[1.4rem] border border-white/82 bg-white/78 p-3 shadow-[0_18px_52px_rgba(21,155,215,0.1)] backdrop-blur-xl dark:border-white/10 dark:bg-night-panel/64 dark:shadow-black/20 sm:rounded-[2rem] sm:p-5 ${className}`}
+      initial={{ opacity: 0, y: 28 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.58, ease: "easeOut" }}
+    >
+      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-water-blue/[0.08] via-white/45 to-soft-gold/[0.06] dark:from-water-cyan/[0.065] dark:via-white/[0.035] dark:to-soft-gold/[0.035]" />
+
+      <div className="mb-4 flex flex-wrap items-center justify-between gap-3 px-1">
+        <span className="inline-flex items-center gap-2 rounded-full border border-water-blue/14 bg-water-blue/8 px-3 py-1.5 text-xs font-black text-water-blue shadow-sm dark:border-water-cyan/14 dark:bg-water-cyan/8 dark:text-water-cyan">
+          <YouTubeIcon size={18} className="text-[#FF0000]" />
+          {labels.youtubeCta}
+        </span>
+        <span className="inline-flex items-center gap-2 rounded-full border border-water-blue/12 bg-water-blue/8 px-3 py-1.5 text-xs font-black text-water-blue dark:border-water-cyan/14 dark:bg-water-cyan/8 dark:text-water-cyan">
+          <PlayCircle size={15} />
+          {labels.mainVideoBadge}
+        </span>
+      </div>
+
+      <div className="mb-4 rounded-[1.15rem] border border-water-blue/10 bg-white/58 p-4 text-center shadow-sm shadow-slate-900/[0.03] dark:border-water-cyan/10 dark:bg-white/[0.045] sm:p-5">
+        <h3 className="text-2xl font-black text-[var(--heading)] sm:text-3xl">
+          {labels.youtubeTitle}
+        </h3>
+        <p className="mx-auto mt-2 max-w-3xl text-sm font-bold leading-7 text-[var(--muted)] sm:text-base sm:leading-8">
+          {labels.youtubeText}
+        </p>
+      </div>
+
+      <div className="overflow-hidden rounded-[1.15rem] border border-white/82 bg-black shadow-[0_16px_38px_rgba(21,155,215,0.1)] dark:border-white/10">
+        <iframe
+          src={projectYoutubeEmbedUrl}
+          title={labels.youtubeCta}
+          className="block aspect-video w-full"
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerPolicy="strict-origin-when-cross-origin"
+          allowFullScreen
+        />
+      </div>
+    </motion.div>
   );
 }
 
@@ -332,15 +595,18 @@ function DocumentationModal({ media, labels, selected, onSelect, onClose }) {
   );
 }
 
-export default function DocumentedProjects() {
-  const { language } = useLanguage();
-  const labels = content[language] || content.ar;
-  const [selectedMedia, setSelectedMedia] = useState(defaultMedia);
+function ProjectDocumentationCard({ project, sectionLabels, language, projectNumber }) {
+  const labels = {
+    ...sectionLabels,
+    ...(project.content?.[language] || project.content?.ar || {}),
+  };
+  const [selectedMedia, setSelectedMedia] = useState(project.defaultMedia);
   const [isGalleryOpen, setIsGalleryOpen] = useState(false);
+  const statusMeta = labels.meta.find((item) => item.success);
   const mediaCountText =
     language === "ar"
-      ? `${projectImageMedia.length} صور${projectVideos.length ? ` + ${projectVideos.length} فيديو` : ""}`
-      : `${projectImageMedia.length} photos${projectVideos.length ? ` + ${projectVideos.length} video` : ""}`;
+      ? `${project.imageMedia.length} صور${project.videos.length ? ` + ${project.videos.length} فيديو` : ""}`
+      : `${project.imageMedia.length} photos${project.videos.length ? ` + ${project.videos.length} video` : ""}`;
 
   useEffect(() => {
     if (!isGalleryOpen) return undefined;
@@ -360,6 +626,202 @@ export default function DocumentedProjects() {
       document.removeEventListener("keydown", handleKeyDown);
     };
   }, [isGalleryOpen]);
+
+  return (
+    <>
+      <ProjectNumberHeading labels={labels} number={projectNumber} className="mt-6 sm:mt-8" />
+      <motion.article
+        className="relative mt-3 overflow-hidden rounded-[1.4rem] border border-white/82 bg-white/76 p-3 shadow-[0_18px_52px_rgba(21,155,215,0.1)] backdrop-blur-xl dark:border-white/10 dark:bg-night-panel/64 dark:shadow-black/20 sm:mt-4 sm:rounded-[2rem] sm:p-5"
+        initial={{ opacity: 0, y: 28 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.58, ease: "easeOut" }}
+      >
+        <div className="absolute inset-0 -z-10 bg-gradient-to-br from-water-blue/[0.075] via-white/40 to-soft-gold/[0.07] dark:from-water-cyan/[0.07] dark:via-white/[0.035] dark:to-soft-gold/[0.04]" />
+
+        <div className="grid gap-5 lg:grid-cols-[1.08fr_0.92fr] lg:items-stretch">
+          <div className="min-w-0">
+            <MediaView
+              media={selectedMedia}
+              labels={labels}
+              className="min-h-[16rem] aspect-[4/3] rounded-[1.15rem] border border-white/82 shadow-[0_16px_38px_rgba(21,155,215,0.1)] dark:border-white/10 sm:aspect-[16/10] sm:min-h-[22rem] lg:aspect-[16/11]"
+            />
+
+            <div className="mt-3 flex items-center justify-between gap-3">
+              <span className="inline-flex items-center gap-2 rounded-full border border-water-blue/12 bg-water-blue/8 px-3 py-1.5 text-xs font-black text-water-blue dark:border-water-cyan/14 dark:bg-water-cyan/8 dark:text-water-cyan">
+                <Images size={15} />
+                {labels.galleryBadge}
+              </span>
+              <span className="rounded-full bg-soft-gold/10 px-3 py-1.5 text-xs font-black text-soft-gold">
+                {mediaCountText}
+              </span>
+            </div>
+
+            <div className="mt-3 flex gap-2 overflow-x-auto pb-1">
+              {project.media.map((item) => (
+                <Thumbnail
+                  key={item.id}
+                  media={item}
+                  labels={labels}
+                  isActive={item.id === selectedMedia.id}
+                  onClick={() => setSelectedMedia(item)}
+                />
+              ))}
+            </div>
+          </div>
+
+          <div className="flex min-w-0 flex-col">
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <h3 className="text-xl font-black text-[var(--heading)] sm:text-2xl">
+                {labels.detailsTitle}
+              </h3>
+              {statusMeta ? (
+                <span className="inline-flex items-center gap-2 rounded-full border border-emerald-500/14 bg-emerald-500/10 px-3 py-1.5 text-xs font-black text-emerald-600 dark:text-emerald-300">
+                  <CheckCircle2 size={15} />
+                  {statusMeta.value}
+                </span>
+              ) : null}
+            </div>
+
+            <div className="mt-4 rounded-2xl border border-soft-gold/18 bg-gradient-to-br from-soft-gold/12 via-white/70 to-water-blue/8 p-4 shadow-lg shadow-soft-gold/8 dark:border-soft-gold/14 dark:from-soft-gold/8 dark:via-white/[0.04] dark:to-water-cyan/7">
+              <div className="flex items-center gap-2 text-xs font-black text-soft-gold">
+                <Sparkles size={15} />
+                {labels.dedicationTitle}
+              </div>
+              <p className="mt-3 text-lg font-black leading-8 text-[var(--heading)] sm:text-xl">
+                {labels.dedication}
+              </p>
+              <p className="mt-2 text-sm font-bold leading-7 text-[var(--muted)]">
+                {labels.dedicationText}
+              </p>
+            </div>
+
+            <div className="mt-4 grid grid-cols-1 gap-2.5 sm:grid-cols-2">
+              {labels.meta.map(({ label, value, Icon, success, href }) => (
+                <div
+                  key={label}
+                  className="flex items-start gap-3 rounded-2xl border border-water-blue/8 bg-white/58 p-3 shadow-sm shadow-slate-900/[0.03] dark:border-water-cyan/9 dark:bg-white/[0.045]"
+                >
+                  <span
+                    className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-xl ${
+                      success
+                        ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-300"
+                        : "bg-water-blue/10 text-water-blue dark:bg-water-cyan/10 dark:text-water-cyan"
+                    }`}
+                  >
+                    <Icon size={18} />
+                  </span>
+                  <span className="min-w-0">
+                    <span className="block text-[11px] font-black text-[var(--muted)]">
+                      {label}
+                    </span>
+                    {href ? (
+                      <a
+                        href={href}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="mt-0.5 inline-flex items-center gap-1.5 break-words text-sm font-black leading-5 text-water-blue transition hover:text-water-cyan dark:text-water-cyan"
+                      >
+                        {value}
+                        <ArrowUpRight size={14} />
+                      </a>
+                    ) : (
+                      <span className="mt-0.5 block break-words text-sm font-black leading-5 text-[var(--heading)]">
+                        {value}
+                      </span>
+                    )}
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-4 grid gap-2.5 sm:grid-cols-3">
+              {labels.timeline.map(({ stage, title, text, Icon }, index) => {
+                const stagePreview = project.images[stage]?.[0];
+                const stageImagesCount = project.images[stage]?.length || 0;
+
+                return (
+                  <div
+                    key={stage}
+                    className="relative overflow-hidden rounded-2xl border border-water-blue/8 bg-white/52 p-3 dark:border-water-cyan/9 dark:bg-white/[0.04]"
+                  >
+                    {stagePreview ? (
+                      <div className="mb-3 aspect-[4/3] overflow-hidden rounded-xl bg-sky-soft dark:bg-night-navy">
+                        <img
+                          src={stagePreview}
+                          alt={title}
+                          className="h-full w-full object-cover"
+                          loading="lazy"
+                        />
+                      </div>
+                    ) : null}
+                    <div className="flex items-center gap-2">
+                      <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-soft-gold/10 text-soft-gold">
+                        <Icon size={17} />
+                      </span>
+                      <span className="text-xs font-black text-[var(--heading)]">
+                        {title}
+                      </span>
+                    </div>
+                    <p className="mt-2 text-xs font-bold leading-5 text-[var(--muted)]">
+                      {text}
+                    </p>
+                    <span className="mt-2 inline-flex rounded-full bg-water-blue/8 px-2 py-1 text-[10px] font-black text-water-blue dark:bg-water-cyan/8 dark:text-water-cyan">
+                      {language === "ar" ? `${stageImagesCount} صور` : `${stageImagesCount} photos`}
+                    </span>
+                    <span className="absolute end-3 top-3 rounded-full bg-white/82 px-2 py-1 text-[10px] font-black text-water-blue/55 shadow-sm backdrop-blur-md dark:bg-night-panel/82 dark:text-water-cyan/55">
+                      0{index + 1}
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
+
+            <div className="mt-5 flex flex-wrap gap-3">
+              <button
+                type="button"
+                onClick={() => setIsGalleryOpen(true)}
+                className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-water-blue to-water-cyan px-5 py-3 text-sm font-black text-white shadow-xl shadow-water-blue/24 transition hover:-translate-y-0.5 hover:shadow-water-blue/34"
+              >
+                <Images size={17} />
+                {labels.cta}
+                <ArrowUpRight size={16} className="transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </button>
+              {project.videos[0] ? (
+                <button
+                  type="button"
+                  onClick={() => {
+                    setSelectedMedia(project.videos[0]);
+                    setIsGalleryOpen(true);
+                  }}
+                  className="inline-flex items-center gap-2 rounded-full border border-water-blue/16 bg-white/62 px-5 py-3 text-sm font-black text-water-blue shadow-sm transition hover:-translate-y-0.5 hover:border-water-blue/35 dark:border-water-cyan/15 dark:bg-white/6 dark:text-water-cyan"
+                >
+                  <PlayCircle size={17} />
+                  {labels.videoCta}
+                </button>
+              ) : null}
+            </div>
+          </div>
+        </div>
+      </motion.article>
+
+      <AnimatePresence>
+        {isGalleryOpen ? (
+          <DocumentationModal
+            media={project.media}
+            labels={labels}
+            selected={selectedMedia}
+            onSelect={setSelectedMedia}
+            onClose={() => setIsGalleryOpen(false)}
+          />
+        ) : null}
+      </AnimatePresence>
+    </>
+  );
+}
+
+export default function DocumentedProjects() {
+  const { language } = useLanguage();
+  const labels = content[language] || content.ar;
 
   return (
     <section
@@ -390,199 +852,19 @@ export default function DocumentedProjects() {
           </p>
         </motion.div>
 
-        <motion.article
-          className="relative mt-10 overflow-hidden rounded-[1.4rem] border border-white/82 bg-white/76 p-3 shadow-[0_18px_52px_rgba(21,155,215,0.1)] backdrop-blur-xl dark:border-white/10 dark:bg-night-panel/64 dark:shadow-black/20 sm:mt-14 sm:rounded-[2rem] sm:p-5"
-          initial={{ opacity: 0, y: 28 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.58, ease: "easeOut" }}
-        >
-          <div className="absolute inset-0 -z-10 bg-gradient-to-br from-water-blue/[0.075] via-white/40 to-soft-gold/[0.07] dark:from-water-cyan/[0.07] dark:via-white/[0.035] dark:to-soft-gold/[0.04]" />
+        <ProjectNumberHeading labels={labels} number={1} className="mt-10 sm:mt-14" />
+        <YouTubeEmbed labels={labels} className="mt-3 sm:mt-4" />
 
-          <div className="grid gap-5 lg:grid-cols-[1.08fr_0.92fr] lg:items-stretch">
-            <div className="min-w-0">
-              <MediaView
-                media={selectedMedia}
-                labels={labels}
-                className="min-h-[16rem] aspect-[4/3] rounded-[1.15rem] border border-white/82 shadow-[0_16px_38px_rgba(21,155,215,0.1)] dark:border-white/10 sm:aspect-[16/10] sm:min-h-[22rem] lg:aspect-[16/11]"
-              />
-
-              <div className="mt-3 flex items-center justify-between gap-3">
-                <span className="inline-flex items-center gap-2 rounded-full border border-water-blue/12 bg-water-blue/8 px-3 py-1.5 text-xs font-black text-water-blue dark:border-water-cyan/14 dark:bg-water-cyan/8 dark:text-water-cyan">
-                  <Images size={15} />
-                  {labels.galleryBadge}
-                </span>
-                <span className="rounded-full bg-soft-gold/10 px-3 py-1.5 text-xs font-black text-soft-gold">
-                  {mediaCountText}
-                </span>
-              </div>
-
-              <div className="mt-3 flex gap-2 overflow-x-auto pb-1">
-                {projectMedia.map((item) => (
-                  <Thumbnail
-                    key={item.id}
-                    media={item}
-                    labels={labels}
-                    isActive={item.id === selectedMedia.id}
-                    onClick={() => setSelectedMedia(item)}
-                  />
-                ))}
-              </div>
-            </div>
-
-            <div className="flex min-w-0 flex-col">
-              <div className="flex flex-wrap items-center justify-between gap-3">
-                <h3 className="text-xl font-black text-[var(--heading)] sm:text-2xl">
-                  {labels.detailsTitle}
-                </h3>
-                <span className="inline-flex items-center gap-2 rounded-full border border-emerald-500/14 bg-emerald-500/10 px-3 py-1.5 text-xs font-black text-emerald-600 dark:text-emerald-300">
-                  <CheckCircle2 size={15} />
-                  {labels.meta[6].value}
-                </span>
-              </div>
-
-              <div className="mt-4 rounded-2xl border border-soft-gold/18 bg-gradient-to-br from-soft-gold/12 via-white/70 to-water-blue/8 p-4 shadow-lg shadow-soft-gold/8 dark:border-soft-gold/14 dark:from-soft-gold/8 dark:via-white/[0.04] dark:to-water-cyan/7">
-                <div className="flex items-center gap-2 text-xs font-black text-soft-gold">
-                  <Sparkles size={15} />
-                  {labels.dedicationTitle}
-                </div>
-                <p className="mt-3 text-lg font-black leading-8 text-[var(--heading)] sm:text-xl">
-                  {labels.dedication}
-                </p>
-                <p className="mt-2 text-sm font-bold leading-7 text-[var(--muted)]">
-                  {labels.dedicationText}
-                </p>
-              </div>
-
-              <div className="mt-4 grid grid-cols-1 gap-2.5 sm:grid-cols-2">
-                {labels.meta.map(({ label, value, Icon, success, href }) => (
-                  <div
-                    key={label}
-                    className="flex items-start gap-3 rounded-2xl border border-water-blue/8 bg-white/58 p-3 shadow-sm shadow-slate-900/[0.03] dark:border-water-cyan/9 dark:bg-white/[0.045]"
-                  >
-                    <span
-                      className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-xl ${
-                        success
-                          ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-300"
-                          : "bg-water-blue/10 text-water-blue dark:bg-water-cyan/10 dark:text-water-cyan"
-                      }`}
-                    >
-                      <Icon size={18} />
-                    </span>
-                    <span className="min-w-0">
-                      <span className="block text-[11px] font-black text-[var(--muted)]">
-                        {label}
-                      </span>
-                      {href ? (
-                        <a
-                          href={href}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="mt-0.5 inline-flex items-center gap-1.5 break-words text-sm font-black leading-5 text-water-blue transition hover:text-water-cyan dark:text-water-cyan"
-                        >
-                          {value}
-                          <ArrowUpRight size={14} />
-                        </a>
-                      ) : (
-                        <span className="mt-0.5 block break-words text-sm font-black leading-5 text-[var(--heading)]">
-                          {value}
-                        </span>
-                      )}
-                    </span>
-                  </div>
-                ))}
-              </div>
-
-              <div className="mt-4 grid gap-2.5 sm:grid-cols-3">
-                {labels.timeline.map(({ stage, title, text, Icon }, index) => {
-                  const stagePreview = projectImages[stage]?.[0];
-                  const stageImagesCount = projectImages[stage]?.length || 0;
-
-                  return (
-                    <div
-                      key={stage}
-                      className="relative overflow-hidden rounded-2xl border border-water-blue/8 bg-white/52 p-3 dark:border-water-cyan/9 dark:bg-white/[0.04]"
-                    >
-                      {stagePreview ? (
-                        <div className="mb-3 aspect-[4/3] overflow-hidden rounded-xl bg-sky-soft dark:bg-night-navy">
-                          <img
-                            src={stagePreview}
-                            alt={title}
-                            className="h-full w-full object-cover"
-                            loading="lazy"
-                          />
-                        </div>
-                      ) : null}
-                      <div className="flex items-center gap-2">
-                        <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-soft-gold/10 text-soft-gold">
-                          <Icon size={17} />
-                        </span>
-                        <span className="text-xs font-black text-[var(--heading)]">
-                          {title}
-                        </span>
-                      </div>
-                      <p className="mt-2 text-xs font-bold leading-5 text-[var(--muted)]">
-                        {text}
-                      </p>
-                      <span className="mt-2 inline-flex rounded-full bg-water-blue/8 px-2 py-1 text-[10px] font-black text-water-blue dark:bg-water-cyan/8 dark:text-water-cyan">
-                        {language === "ar" ? `${stageImagesCount} صور` : `${stageImagesCount} photos`}
-                      </span>
-                      <span className="absolute end-3 top-3 rounded-full bg-white/82 px-2 py-1 text-[10px] font-black text-water-blue/55 shadow-sm backdrop-blur-md dark:bg-night-panel/82 dark:text-water-cyan/55">
-                        0{index + 1}
-                      </span>
-                    </div>
-                  );
-                })}
-              </div>
-
-              <div className="mt-5 flex flex-wrap gap-3">
-                <button
-                  type="button"
-                  onClick={() => setIsGalleryOpen(true)}
-                  className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-water-blue to-water-cyan px-5 py-3 text-sm font-black text-white shadow-xl shadow-water-blue/24 transition hover:-translate-y-0.5 hover:shadow-water-blue/34"
-                >
-                  <Images size={17} />
-                  {labels.cta}
-                  <ArrowUpRight size={16} className="transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </button>
-                <button
-                  type="button"
-                  onClick={() => {
-                    setSelectedMedia(projectVideos[0]);
-                    setIsGalleryOpen(true);
-                  }}
-                  className="inline-flex items-center gap-2 rounded-full border border-water-blue/16 bg-white/62 px-5 py-3 text-sm font-black text-water-blue shadow-sm transition hover:-translate-y-0.5 hover:border-water-blue/35 dark:border-water-cyan/15 dark:bg-white/6 dark:text-water-cyan"
-                >
-                  <PlayCircle size={17} />
-                  {labels.videoCta}
-                </button>
-
-                <a
-                  href={projectYoutubeUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group inline-flex items-center gap-2 rounded-full border border-red-500/18 bg-red-500/8 px-5 py-3 text-sm font-black text-red-600 shadow-sm transition hover:-translate-y-0.5 hover:border-red-500/35 hover:bg-red-500/12 dark:border-red-400/18 dark:bg-red-400/8 dark:text-red-300"
-                >
-                  <YouTubeIcon size={18} className="text-[#FF0000]" />
-                  {labels.youtubeCta}
-                  <ArrowUpRight size={16} className="transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </a>
-              </div>
-            </div>
-          </div>
-        </motion.article>
-      </Container>
-
-      <AnimatePresence>
-        {isGalleryOpen ? (
-          <DocumentationModal
-            media={projectMedia}
-            labels={labels}
-            selected={selectedMedia}
-            onSelect={setSelectedMedia}
-            onClose={() => setIsGalleryOpen(false)}
+        {documentedProjects.map((project, index) => (
+          <ProjectDocumentationCard
+            key={project.id}
+            project={project}
+            sectionLabels={labels}
+            language={language}
+            projectNumber={index + 2}
           />
-        ) : null}
-      </AnimatePresence>
+        ))}
+      </Container>
     </section>
   );
 }
