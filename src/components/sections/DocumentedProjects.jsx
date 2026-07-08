@@ -188,7 +188,7 @@ const content = {
     youtubeCta: "توثيق المشروع الكامل",
     youtubeTitle: "توثيق مشروع كامل",
     youtubeText:
-      "توثيق كامل لمشروع بئر ماء في نيبال، يروي مراحل العمل من البداية حتى التسليم، ويوثق الأثر الذي يصل إلى الناس بفضل الله ثم بفضل أهل الخير.",
+      "توثيق كامل لمشروع بئر ارتوازي في الهند بعمق يصل إلى 180 مترًا مع متوضأ ماء، ليكون بعون الله مصدرًا مستدامًا يلبي احتياجات قرية بأكملها. يوثق الفيديو رحلة العمل من أول خطوة حتى التسليم، والأثر المبارك الذي يصل إلى أهل القرية بفضل الله ثم بفضل أهل الخير.",
     close: "إغلاق",
     moreMedia: "وسائط",
     stageLabels: {
@@ -197,7 +197,7 @@ const content = {
       after: "بعد التنفيذ",
     },
     meta: [
-      { label: "نوع المشروع", value: "بئر ماء", Icon: BadgeCheck },
+      { label: "نوع المشروع", value: "بئر ماء مع حنفيتين دهان", Icon: BadgeCheck },
       { label: "موقع المشروع", value: "نيبال", Icon: MapPin, href: projectMapUrl },
       { label: "تاريخ المشروع", value: "28/05/2026", Icon: CalendarDays },
       { label: "التاريخ الهجري", value: "11 ذو الحجة 1447ه", Icon: CalendarDays },
@@ -231,7 +231,7 @@ const content = {
     youtubeCta: "Full Project Documentation",
     youtubeTitle: "Full Project Documentation",
     youtubeText:
-      "A complete documentation video for a water well project in Nepal, showing the journey from the first stages of work to final handover and the impact delivered to the community.",
+      "A complete documentation video for an artesian well project in India, reaching a depth of 180 meters and including an ablution water area, becoming by Allah's grace a sustainable water source that serves the needs of an entire village. The video documents the journey from the first step to handover and the blessed impact delivered through the kindness of generous donors.",
     close: "Close",
     moreMedia: "media",
     stageLabels: {
@@ -263,9 +263,9 @@ const project2Content = {
     dedicationText:
       "سائلين الله تعالى القبول وأن يجعلها صدقة جارية لهم تحت إشراف أبو عمر غازي عن طريق صفحة نداء الرحمة لحفر الابار و بناء المساجد صدقة جارية مشروع رقم 739",
     meta: [
-      { label: "نوع المشروع", value: "بئر الغيث و الرحمة", Icon: BadgeCheck },
+      { label: "نوع المشروع", value: "بئر مع متوضأ ماء", Icon: BadgeCheck },
       { label: "رقم المشروع", value: "739", Icon: BadgeCheck },
-      { label: "موقع المشروع", value: "الهند بجاني مسجد", Icon: MapPin },
+      { label: "موقع المشروع", value: "الهند بجانب مسجد", Icon: MapPin },
       { label: "تاريخ المشروع", value: "12/02/2026", Icon: CalendarDays },
       { label: "الإشراف", value: "أبو عمر غازي", Icon: UserRoundCheck },
       {
@@ -304,9 +304,9 @@ const project3Content = {
     dedicationText:
       "سائلين الله القبول و أن يجعلها صدقة جارية لهم تحت إشراف أبو عمر غازي عن طريق صفحة نداء الرحمة لحفر الابار و بناء المساجد صدقة جارية مشروع رقم 728",
     meta: [
-      { label: "نوع المشروع", value: "بئر الغيث و الرحمة", Icon: BadgeCheck },
+      { label: "نوع المشروع", value: "بئر ماء وسطي مع 12 حنفية ماء", Icon: BadgeCheck },
       { label: "رقم المشروع", value: "728", Icon: BadgeCheck },
-      { label: "موقع المشروع", value: "الباكستان", Icon: MapPin },
+      { label: "موقع المشروع", value: "الباكستان بجانب مسجد", Icon: MapPin },
       { label: "تاريخ المشروع", value: "05/02/2026", Icon: CalendarDays },
       { label: "الإشراف", value: "أبو عمر غازي", Icon: UserRoundCheck },
       {
