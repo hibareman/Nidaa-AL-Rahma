@@ -10,6 +10,7 @@ import DocumentedProjects from "./components/sections/DocumentedProjects.jsx";
 import FAQ from "./components/sections/FAQ.jsx";
 import Contact from "./components/sections/Contact.jsx";
 import Footer from "./components/layout/Footer.jsx";
+import FloatingWhatsApp from "./components/ui/FloatingWhatsApp.jsx";
 export default function App() {
   const [isPreloading, setIsPreloading] = useState(true);
 
@@ -43,6 +44,7 @@ export default function App() {
             <Contact />
           </main>
           <Footer />
+          <FloatingWhatsApp />
         </motion.div>
       ) : null}
     </div>
