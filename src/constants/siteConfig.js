@@ -27,7 +27,7 @@ export const siteConfig = {
   },
   
   contact: {
-    email: "info@nidaa-alrahma.org",
+    email: "nidaaalrahma@gmail.com",
     phone: "+44 7411 572266",
     location: {
       ar: "مكتب المؤسسة",

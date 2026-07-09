@@ -42,6 +42,7 @@ const footerContent = {
     projectCta: "اطلب مشروعك",
     whatsappTitle: "واتساب مباشر",
     whatsappText: "+44 7411 572266",
+    emailTitle: "البريد الإلكتروني",
     imageNote: "أثر الماء يبدأ من لحظة وصوله",
     copyright: "© 2026 نداء الرحمة. جميع الحقوق محفوظة.",
     careLine: "صُمم بعناية لخدمة مشاريع الخير والصدقة الجارية.",
@@ -71,6 +72,7 @@ const footerContent = {
     projectCta: "Request Your Project",
     whatsappTitle: "Direct WhatsApp",
     whatsappText: "+44 7411 572266",
+    emailTitle: "Email",
     imageNote: "Water impact begins the moment it arrives",
     copyright: "© 2026 Nidaa Alrahma. All rights reserved.",
     careLine: "Designed with care to serve charitable and ongoing charity projects.",
@@ -278,6 +280,23 @@ export default function Footer() {
                 <span className="mt-0.5 block text-xs font-bold text-white/70">{content.whatsappText}</span>
               </span>
               <ArrowUpRight size={16} className="ms-auto text-water-cyan" />
+            </ExternalLink>
+
+            <ExternalLink
+              href={footerLinks.email}
+              ariaLabel={content.emailTitle}
+              className="mt-3 flex items-center gap-3 rounded-[1.35rem] border border-water-cyan/22 bg-white/[0.085] p-3 text-white shadow-[0_18px_44px_rgba(21,155,215,0.1)] transition hover:-translate-y-0.5 hover:border-water-cyan/40 hover:bg-water-cyan/12 hover:shadow-[0_22px_54px_rgba(34,199,221,0.16)]"
+            >
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-water-cyan/12 text-water-cyan shadow-inner shadow-white/10">
+                <EmailIcon size={22} />
+              </span>
+              <span className="min-w-0">
+                <span className="block text-sm font-black">{content.emailTitle}</span>
+                <span className="mt-0.5 block break-all text-xs font-bold text-white/70">
+                  {siteConfig.contact.email}
+                </span>
+              </span>
+              <ArrowUpRight size={16} className="ms-auto shrink-0 text-water-cyan" />
             </ExternalLink>
 
             <div className="mt-3 grid grid-cols-2 gap-2">

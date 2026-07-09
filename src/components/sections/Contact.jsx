@@ -49,10 +49,10 @@ const contactContent = {
     whatsappText: "+44 7411 572266",
     whatsappCta: "ابدأ المحادثة",
     formTitle: "أرسل استفسارك",
-    formText: "اكتب تفاصيل طلبك، وسنجهز لك رسالة واضحة لمتابعة التواصل مباشرة.",
+    formText: "اكتب تفاصيل طلبك، وسيتم تجهيز رسالة بريد إلكتروني موجهة إلى بريدنا مباشرة.",
     submit: "إرسال الرسالة",
     success:
-      "تم تجهيز رسالتك، يرجى التواصل معنا مباشرة عبر واتساب لإرسالها.",
+      "تم تجهيز رسالتك لإرسالها إلى بريدنا الإلكتروني.",
     fields: {
       name: "الاسم الكامل",
       phone: "رقم الهاتف أو واتساب",
@@ -93,10 +93,10 @@ const contactContent = {
     whatsappText: "+44 7411 572266",
     whatsappCta: "Start Chat",
     formTitle: "Send Your Inquiry",
-    formText: "Write your request details, and we will prepare a clear message for direct follow-up.",
+    formText: "Write your request details, and we will prepare an email message addressed directly to us.",
     submit: "Send Message",
     success:
-      "Your message has been prepared. Please contact us directly through WhatsApp to send it.",
+      "Your message has been prepared to send to our email.",
     fields: {
       name: "Full Name",
       phone: "Phone or WhatsApp",
@@ -151,19 +151,26 @@ export default function Contact() {
     message: "",
   });
 
-  const preparedWhatsappUrl = useMemo(() => {
+  const preparedEmailUrl = useMemo(() => {
+    const buildLine = (label, value) => {
+      const trimmedValue = (value || "").trim();
+      return trimmedValue ? `${label}: ${trimmedValue}` : "";
+    };
+
     const message = [
-      content.fields.name + ": " + formValues.name,
-      content.fields.phone + ": " + formValues.phone,
-      content.fields.email + ": " + formValues.email,
-      content.fields.projectType + ": " + formValues.projectType,
-      content.fields.message + ": " + formValues.message,
+      buildLine(content.fields.name, formValues.name),
+      buildLine(content.fields.phone, formValues.phone),
+      buildLine(content.fields.email, formValues.email),
+      buildLine(content.fields.projectType, formValues.projectType),
+      buildLine(content.fields.message, formValues.message),
     ]
-      .filter((line) => !line.endsWith(": "))
+      .filter(Boolean)
       .join("\n");
 
-    return createWhatsappUrl(message);
-  }, [content, formValues]);
+    const subject = `${content.formTitle} - ${siteConfig.name[language] || siteConfig.name.ar}`;
+
+    return `mailto:${siteConfig.contact.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
+  }, [content, formValues, language]);
 
   const updateField = (field, value) => {
     setIsPrepared(false);
@@ -173,6 +180,7 @@ export default function Contact() {
   const handleSubmit = (event) => {
     event.preventDefault();
     setIsPrepared(true);
+    window.location.href = preparedEmailUrl;
   };
 
   return (
@@ -428,11 +436,11 @@ export default function Contact() {
                 <CheckCircle2 className="me-2 inline-block" size={18} />
                 {content.success}
                 <ExternalLink
-                  href={preparedWhatsappUrl}
+                  href={preparedEmailUrl}
                   className="ms-2 inline-flex items-center gap-1 text-water-blue underline decoration-water-blue/30 underline-offset-4 dark:text-water-cyan"
-                  ariaLabel="WhatsApp"
+                  ariaLabel="Email"
                 >
-                  WhatsApp
+                  {siteConfig.contact.email}
                   <ArrowUpRight size={14} />
                 </ExternalLink>
               </div>
