@@ -261,7 +261,7 @@ function HeroContent({ copy, direction }) {
         transition={{ delay: 0.48, duration: 0.5, ease: "easeOut" }}
       >
         <a
-          href="#contact"
+          href="#projects"
           className="inline-flex min-h-16 w-full items-center justify-center gap-3 rounded-2xl bg-[#1769d5] px-9 text-lg font-bold !text-white shadow-[0_18px_42px_rgba(23,105,213,0.24)] transition-transform duration-200 hover:-translate-y-0.5 hover:bg-[#135fc1] dark:bg-[#0f766e] dark:!text-white dark:shadow-[0_18px_42px_rgba(20,184,166,0.14)] dark:hover:bg-[#12857c] sm:w-auto"
         >
           {copy.primaryCta}
